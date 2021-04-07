@@ -1,6 +1,6 @@
 {
-  "name": "with-typescript-eslint-jest",
-  "author": "@erikdstock",
+  "name": "bankless-token-site",
+  "author": "@wpmonty",
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
