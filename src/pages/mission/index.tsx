@@ -13,6 +13,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const Home = (): JSX.Element => <div>Mission</div>
+const Page = (): JSX.Element => <div>Mission</div>
 
-export default Home
+export default Page
