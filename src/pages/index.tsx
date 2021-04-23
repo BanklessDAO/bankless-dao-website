@@ -1,7 +1,10 @@
 import { GetStaticProps } from 'next'
+import { PageMetaProps } from '../components/global/Head'
 
-const pageMeta = {
+const pageMeta: PageMetaProps = {
   title: 'Homepage',
+  description: 'This is the homepage',
+  url: 'https://www.bankless.community/',
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -10,6 +13,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const Home = (): JSX.Element => <div className="container">Hello</div>
+const Home = (): JSX.Element => <div>Homepage</div>
 
 export default Home

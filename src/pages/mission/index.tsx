@@ -2,9 +2,9 @@ import { GetStaticProps } from 'next'
 import { PageMetaProps } from '../../components/global/Head'
 
 const pageMeta: PageMetaProps = {
-  title: 'Claim BANK',
-  description: 'This is the claim page',
-  url: 'https://www.bankless.community/claim',
+  title: 'Bankless Mission',
+  description: 'This is the mission page',
+  url: 'https://www.bankless.community/mission',
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -13,6 +13,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const Home = (): JSX.Element => <div>Claim</div>
+const Home = (): JSX.Element => <div>Mission</div>
 
 export default Home

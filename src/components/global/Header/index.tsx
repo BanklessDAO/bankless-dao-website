@@ -31,7 +31,7 @@ const Header = () => {
             <NextLink href="/mission">
               <HeaderNavItem>Mission</HeaderNavItem>
             </NextLink>
-            <NextLink href="/stats">
+            <NextLink href="/claim">
               <HeaderNavItem>Claim BANK</HeaderNavItem>
             </NextLink>
             <NextLink href="/governance">
