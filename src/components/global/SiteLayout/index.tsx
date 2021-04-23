@@ -4,23 +4,28 @@ import { createGlobalStyle, css } from 'styled-components'
 
 import Head from '../Head'
 import Header from '../Header'
+import Footer from '../Footer'
 
 // TODO add fonts
 
 const styles = css`
   ${normalize()}
+  * {
+    box-sizing: border-box;
+  }
 `
 
 const GlobalStyle = createGlobalStyle`
   ${styles}
 `
 const SiteLayout = ({ pageMeta, children }) => (
-  <main>
+  <React.Fragment>
     <GlobalStyle />
     <Head {...pageMeta} />
     <Header />
-    {children}
-  </main>
+    <main>{children}</main>
+    <Footer />
+  </React.Fragment>
 )
 
 export default SiteLayout
