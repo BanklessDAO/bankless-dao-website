@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "ClearSans";
+  src: url("./clear-sans/EOT/ClearSans-Thin.eot");
+  src: url("./clear-sans/EOT/ClearSans-Thin.eot?#iefix") format("embedded-opentype"),
+    url("./clear-sans/WOFF/ClearSans-Thin.woff") format("woff"),
+    url("./clear-sans/TTF/ClearSans-Thin.ttf") format("truetype"),
+    url("./clear-sans/SVG/ClearSans-Thin.svg#svgFontName") format("svg");
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "ClearSans";
+  src: url("./clear-sans/EOT/ClearSans-Regular.eot");
+  src: url("./clear-sans/EOT/ClearSans-Regular.eot?#iefix") format("embedded-opentype"),
+    url("./clear-sans/WOFF/ClearSans-Regular.woff") format("woff"),
+    url("./clear-sans/TTF/ClearSans-Regular.ttf") format("truetype"),
+    url("./clear-sans/SVG/ClearSans-Regular.svg#svgFontName") format("svg");
+  font-style: normal;
+  font-weight: 600;
+  font-display: fallback;
+}

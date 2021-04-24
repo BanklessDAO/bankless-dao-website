@@ -1,11 +1,11 @@
-import { HeaderWalletConnectButton } from './style'
+import Button from 'src/components/parts/Button'
 
-const Button = ({ isConnected = false }) => {
+const WalletButton = ({ isConnected = false }) => {
   return (
-    <HeaderWalletConnectButton isConnected={isConnected}>
+    <Button theme={isConnected ? 'lime' : 'pink'} thin={true}>
       {isConnected ? 'Connected' : 'Connect a Wallet'}
-    </HeaderWalletConnectButton>
+    </Button>
   )
 }
 
-export default Button
+export default WalletButton

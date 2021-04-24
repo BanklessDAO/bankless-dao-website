@@ -36,7 +36,9 @@ class BanklessDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head></Head>
+        <Head>
+          <link rel="stylesheet" type="text/css" href="/fonts/fonts.css" />
+        </Head>
         <body>
           <noscript>Oops, you'll need Javascript to run this site.</noscript>
           <Main />

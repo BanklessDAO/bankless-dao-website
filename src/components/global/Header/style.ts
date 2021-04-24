@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import { _Wrapper, _Container } from '../style'
+import { colors } from 'src/theme'
 
 export const HeaderWrapper = styled(_Wrapper)`
-  background: #111;
+  background: ${colors.black};
   padding-top: 7px;
   padding-bottom: 7px;
 `
@@ -17,10 +18,11 @@ export const HeaderBrandContainer = styled.div`
 `
 export const HeaderNavContainer = styled.div`
   display: flex;
+  align-items: center;
 `
 
 export const HeaderNavItem = styled.a`
-  color: white;
+  color: ${colors.white};
   text-transform: uppercase;
   display: inline-block;
   padding: 12px 30px;
@@ -28,14 +30,4 @@ export const HeaderNavItem = styled.a`
     cursor: pointer;
     text-decoration: underline;
   }
-`
-
-export const HeaderWalletConnectButton = styled.button`
-  border: 1px solid
-    ${({ isConnected }) => (isConnected ? '#14FF00' : '#ff0000')};
-  background: ${({ isConnected }) =>
-    isConnected ? '#14FF00' : 'rgba(255, 0, 0, 0.3)'};
-  border-radius: 6px;
-  padding: 8px 16px;
-  color: white;
 `

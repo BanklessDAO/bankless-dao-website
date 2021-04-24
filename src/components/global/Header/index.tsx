@@ -28,14 +28,14 @@ const Header = () => {
         </HeaderBrandContainer>
         <HeaderNavContainer>
           <nav>
-            <NextLink href="/mission">
-              <HeaderNavItem>Mission</HeaderNavItem>
-            </NextLink>
             <NextLink href="/claim">
-              <HeaderNavItem>Claim BANK</HeaderNavItem>
+              <HeaderNavItem>Claim</HeaderNavItem>
             </NextLink>
             <NextLink href="/governance">
               <HeaderNavItem>Governance</HeaderNavItem>
+            </NextLink>
+            <NextLink href="/mission">
+              <HeaderNavItem>Mission</HeaderNavItem>
             </NextLink>
             <NextLink href="/resources">
               <HeaderNavItem>Resources</HeaderNavItem>
