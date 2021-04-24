@@ -12,11 +12,11 @@
 
 @font-face {
   font-family: "ClearSans";
-  src: url("./clear-sans/EOT/ClearSans-Regular.eot");
-  src: url("./clear-sans/EOT/ClearSans-Regular.eot?#iefix") format("embedded-opentype"),
-    url("./clear-sans/WOFF/ClearSans-Regular.woff") format("woff"),
-    url("./clear-sans/TTF/ClearSans-Regular.ttf") format("truetype"),
-    url("./clear-sans/SVG/ClearSans-Regular.svg#svgFontName") format("svg");
+  src: url("./clear-sans/EOT/ClearSans-Medium.eot");
+  src: url("./clear-sans/EOT/ClearSans-Medium.eot?#iefix") format("embedded-opentype"),
+    url("./clear-sans/WOFF/ClearSans-Medium.woff") format("woff"),
+    url("./clear-sans/TTF/ClearSans-Medium.ttf") format("truetype"),
+    url("./clear-sans/SVG/ClearSans-Medium.svg#svgFontName") format("svg");
   font-style: normal;
   font-weight: 600;
   font-display: fallback;

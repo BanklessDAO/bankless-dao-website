@@ -29,16 +29,16 @@ const Header = () => {
         <HeaderNavContainer>
           <nav>
             <NextLink href="/claim">
-              <HeaderNavItem>Claim</HeaderNavItem>
+              <HeaderNavItem tabIndex="0">Claim</HeaderNavItem>
             </NextLink>
             <NextLink href="/governance">
-              <HeaderNavItem>Governance</HeaderNavItem>
+              <HeaderNavItem tabIndex="0">Governance</HeaderNavItem>
             </NextLink>
             <NextLink href="/mission">
-              <HeaderNavItem>Mission</HeaderNavItem>
+              <HeaderNavItem tabIndex="0">Mission</HeaderNavItem>
             </NextLink>
             <NextLink href="/resources">
-              <HeaderNavItem>Resources</HeaderNavItem>
+              <HeaderNavItem tabIndex="0">Resources</HeaderNavItem>
             </NextLink>
           </nav>
           <ConnectWalletButton isConnected={false} />
