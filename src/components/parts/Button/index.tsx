@@ -6,33 +6,39 @@ import {
   TransparentButton,
 } from './style'
 
-const Button = ({ theme = 'red', thin = false, shadow = false, children }) => {
+const Button = ({
+  theme = 'red',
+  thin = false,
+  shadow = false,
+  children,
+  ...restProps
+}) => {
   if ('green' === theme)
     return (
-      <GreenButton thin={thin} shadow={shadow}>
+      <GreenButton thin={thin} shadow={shadow} {...restProps}>
         {children}
       </GreenButton>
     )
   if ('pink' === theme)
     return (
-      <PinkButton thin={thin} shadow={shadow}>
+      <PinkButton thin={thin} shadow={shadow} {...restProps}>
         {children}
       </PinkButton>
     )
   if ('transparent' === theme)
     return (
-      <TransparentButton thin={thin} shadow={shadow}>
+      <TransparentButton thin={thin} shadow={shadow} {...restProps}>
         {children}
       </TransparentButton>
     )
   if ('white' === theme)
     return (
-      <WhiteButton thin={thin} shadow={shadow}>
+      <WhiteButton thin={thin} shadow={shadow} {...restProps}>
         {children}
       </WhiteButton>
     )
   return (
-    <RedButton thin={thin} shadow={shadow}>
+    <RedButton thin={thin} shadow={shadow} {...restProps}>
       {children}
     </RedButton>
   )
