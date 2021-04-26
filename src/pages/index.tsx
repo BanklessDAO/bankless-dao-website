@@ -8,8 +8,9 @@ import ClaimSection from 'src/components/pages/Home/Claim'
 import React from 'react'
 
 const pageMeta: PageMetaProps = {
-  title: 'Homepage',
-  description: 'This is the homepage',
+  title: 'Home | Bankless DAO',
+  description:
+    'A decentralized community driving adoption and awareness of bankless money systems like Ethereum, Bitcoin and DeFi.',
   url: 'https://www.bankless.community/',
 }
 
