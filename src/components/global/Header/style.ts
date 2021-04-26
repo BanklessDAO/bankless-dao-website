@@ -23,7 +23,7 @@ export const HeaderNavContainer = styled.div`
 
 export const HeaderNavItem = styled.a`
   ${fontStyles.H3}
-  color: ${colors.white};
+  color: ${({ active }) => (active ? colors.red : colors.white)};
   text-transform: uppercase;
   display: inline-block;
   padding: 12px 30px;
