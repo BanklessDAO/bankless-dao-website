@@ -25,7 +25,9 @@ export const SubHeading = styled.h3`
 `
 export const Paragraph = styled.p`
   ${fontStyles.P}
-  padding-bottom: 50px;
+  padding-bottom: 110px;
+  max-width: 700px;
+  margin: 0 auto;
 `
 export const FatDate = styled.strong`
   display: block;
