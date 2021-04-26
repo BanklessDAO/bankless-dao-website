@@ -2,8 +2,9 @@ import { GetStaticProps } from 'next'
 import { PageMetaProps } from '../../components/global/Head'
 
 const pageMeta: PageMetaProps = {
-  title: 'Claim BANK',
-  description: 'This is the claim page',
+  title: 'Claim BANK Tokens | Bankless DAO',
+  description:
+    'Connect your Ethereum wallet to redeem and claim your BANK community tokens.',
   url: 'https://www.bankless.community/claim',
 }
 
