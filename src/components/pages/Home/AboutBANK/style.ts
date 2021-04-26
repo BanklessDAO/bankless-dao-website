@@ -1,17 +1,35 @@
 import styled from 'styled-components'
 import { _Wrapper, _Container } from 'src/components/global/style'
-import { colors, fontStyles, gradient } from 'src/theme'
+import { colors, fontStyles, gradients, breakpoints } from 'src/theme'
 
 export const SectionWrapper = styled(_Wrapper)`
-  background: ${gradient};
+  background: ${gradients.grayred};
   color: ${colors.white};
 `
 export const SectionContainer = styled(_Container)`
   padding-top: 50px;
   padding-bottom: 50px;
-  @media (min-width: 768px) {
-    padding-top: 150px;
-    padding-bottom: 150px;
+  @media (min-width: ${breakpoints.md}) {
+    padding-top: 95px;
+    padding-bottom: 95px;
+  }
+`
+export const Col2Row = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const Col1 = styled.div`
+  flex: 3;
+  @media (min-width: ${breakpoints.md}) {
+    flex: 2;
+  }
+`
+export const Col2 = styled.div`
+  display: flex;
+  justify-content: center;
+  flex: 2;
+  @media (min-width: ${breakpoints.md}) {
+    flex: 3;
   }
 `
 export const Heading = styled.h2`

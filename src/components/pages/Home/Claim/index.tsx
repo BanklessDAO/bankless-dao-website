@@ -1,6 +1,18 @@
 import NextLink from 'next/link'
+import Image from 'next/image'
 import Button from 'src/components/parts/Button'
-import { SectionWrapper, SectionContainer, Heading, Paragraph } from './style'
+import {
+  SectionWrapper,
+  SectionContainer,
+  Heading,
+  SubHeading,
+  Paragraph,
+  FatDate,
+  Subtext,
+  Col2Row,
+  Col1,
+  ImageContainer,
+} from './style'
 
 const Section = () => {
   return (
@@ -11,30 +23,48 @@ const Section = () => {
           <Paragraph>
             To seed distribution initially, we’re executing a retroactive
             airdrop for Bankless Community members ahead of{' '}
-            <strong>May 4, 2021.</strong>
+            <FatDate>May 4, 2021.</FatDate>
           </Paragraph>
         </div>
-        <div>
-          <div>
-            <h6>Check if you’re eligible to receive BANK</h6>
-            <img />
+        <Col2Row>
+          <Col1>
+            <div>
+              <SubHeading>Check if you’re eligible to receive BANK</SubHeading>
+            </div>
+            <ImageContainer>
+              <Image
+                src="/images/icon-eligible.png"
+                alt="Eligibility Icon"
+                width="110"
+                height="120"
+              />
+            </ImageContainer>
             <NextLink href="/claim">
               <a>
                 <Button theme="white">Check Eligibility</Button>
               </a>
             </NextLink>
-          </div>
-          <div>
-            <h6>Use BANK to Join the Bankless Discord</h6>
-            <small>50k BANK required</small>
-            <img />
+          </Col1>
+          <Col1>
+            <div>
+              <SubHeading>Use BANK to Join the Bankless Discord</SubHeading>
+              <Subtext>50k BANK required</Subtext>
+            </div>
+            <ImageContainer>
+              <Image
+                src="/images/icon-discord.png"
+                alt="Discord Icon"
+                width="101"
+                height="110"
+              />
+            </ImageContainer>
             <NextLink href="#">
               <a>
                 <Button theme="white">Join Discord</Button>
               </a>
             </NextLink>
-          </div>
-        </div>
+          </Col1>
+        </Col2Row>
       </SectionContainer>
     </SectionWrapper>
   )

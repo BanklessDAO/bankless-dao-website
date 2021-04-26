@@ -13,7 +13,7 @@ import {
 const Header = () => {
   return (
     <HeaderWrapper as="header">
-      <HeaderContainer>
+      <HeaderContainer thin>
         <HeaderBrandContainer>
           <NextLink href="/">
             <a>

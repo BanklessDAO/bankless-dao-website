@@ -23,12 +23,16 @@ const Section = () => {
         <ButtonContainer>
           <NextLink href="/claim">
             <a>
-              <Button theme="red">Claim your bank</Button>
+              <Button theme="red" shadow>
+                Claim your bank
+              </Button>
             </a>
           </NextLink>
           <NextLink href="/join">
             <a>
-              <Button theme="transparent">Join the DAO</Button>
+              <Button theme="transparent" shadow>
+                Join the DAO
+              </Button>
             </a>
           </NextLink>
         </ButtonContainer>

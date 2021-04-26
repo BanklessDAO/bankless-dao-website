@@ -3,7 +3,7 @@ import { FooterWrapper, FooterContainer } from './style'
 const Footer = () => {
   return (
     <FooterWrapper as="footer">
-      <FooterContainer>Bankless DAO (c) 2021</FooterContainer>
+      <FooterContainer thin>Bankless DAO (c) 2021</FooterContainer>
     </FooterWrapper>
   )
 }

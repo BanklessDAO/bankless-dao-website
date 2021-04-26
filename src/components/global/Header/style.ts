@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { _Wrapper, _Container } from '../style'
-import { colors } from 'src/theme'
+import { colors, fontStyles } from 'src/theme'
 
 export const HeaderWrapper = styled(_Wrapper)`
   background: ${colors.black};
@@ -22,6 +22,7 @@ export const HeaderNavContainer = styled.div`
 `
 
 export const HeaderNavItem = styled.a`
+  ${fontStyles.H3}
   color: ${colors.white};
   text-transform: uppercase;
   display: inline-block;
