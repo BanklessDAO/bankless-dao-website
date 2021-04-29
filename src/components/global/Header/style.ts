@@ -4,8 +4,8 @@ import { colors, fontStyles, breakpoints } from 'src/theme'
 
 export const HeaderWrapper = styled(_Wrapper)`
   background: ${colors.black};
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `
 export const HeaderContainer = styled(_Container)`
   display: flex;
@@ -13,7 +13,10 @@ export const HeaderContainer = styled(_Container)`
 `
 
 export const HeaderBrandContainer = styled.div`
-  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 110px;
   height: 60px;
 
   @media (min-width: ${breakpoints.lg}) {
@@ -21,10 +24,13 @@ export const HeaderBrandContainer = styled.div`
   }
 `
 export const MobileNavButton = styled.div`
-  display: inline-block;
+  display: flex;
   @media (min-width: ${breakpoints.lg}) {
     display: none;
   }
+`
+export const LogoContainer = styled.div`
+  max-height: 60px;
 `
 export const HeaderNavContainer = styled.div`
   flex: 1;
@@ -41,12 +47,13 @@ export const HeaderNav = styled.nav`
       active ? 'translateX(0)' : 'translateX(-20px)'};
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
     position: absolute;
-    top: 74px;
+    top: 80px;
     left: 0;
     bottom: 0;
     display: flex;
     flex-direction: column;
     padding-left: 65px;
+    padding-top: 30px;
     width: 350px;
   }
   @media (max-width: ${breakpoints.md}) {
@@ -65,10 +72,14 @@ export const HeaderNavItem = styled.a`
     text-decoration: underline;
   }
 `
+export const DropdownCarot = styled.div`
+  display: inline-block;
+  padding-left: 15px;
+`
 export const DropdownNavItem = styled.div`
   display: inline-block;
   position: relative;
-  padding-right: 80px;
+  padding-right: 70px;
 `
 export const DropdownContainer = styled.ul`
   display: flex;
@@ -86,7 +97,7 @@ export const DropdownContainer = styled.ul`
   padding: 10px 25px 10px 30px;
 
   @media (min-width: ${breakpoints.lg}) {
-    padding: 20px 15px;
+    padding: 20px;
   }
 
   a {

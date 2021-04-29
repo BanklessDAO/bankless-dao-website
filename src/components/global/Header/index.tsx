@@ -9,10 +9,12 @@ import {
   HeaderWrapper,
   HeaderContainer,
   MobileNavButton,
+  LogoContainer,
   HeaderBrandContainer,
   HeaderNavContainer,
   HeaderNav,
   HeaderNavItem,
+  DropdownCarot,
   DropdownNavItem,
   DropdownContainer,
 } from './style'
@@ -38,23 +40,29 @@ const Header = ({ currentPage = '' }) => {
         <HeaderBrandContainer>
           <MobileNavButton>
             <Image
-              src="/logo.png"
+              src={
+                isMobileNavActive
+                  ? '/images/icon-close.svg'
+                  : '/images/icon-mobile-nav.svg'
+              }
               alt="Open Mobile Nav"
-              width="60px"
-              height="60px"
+              width={30}
+              height={30}
               onClick={handleMobileNavClick}
             />
           </MobileNavButton>
-          <NextLink href="/">
-            <a>
-              <Image
-                src="/logo.png"
-                alt="Bankless Community Logo"
-                width={60}
-                height={60}
-              />
-            </a>
-          </NextLink>
+          <LogoContainer>
+            <NextLink href="/">
+              <a>
+                <Image
+                  src="/logo.png"
+                  alt="Bankless Community Logo"
+                  width={60}
+                  height={60}
+                />
+              </a>
+            </NextLink>
+          </LogoContainer>
         </HeaderBrandContainer>
         <HeaderNavContainer>
           <HeaderNav active={isMobileNavActive}>
@@ -92,6 +100,18 @@ const Header = ({ currentPage = '' }) => {
                 onClick={handleDropdownClick}
               >
                 Resources
+                <DropdownCarot>
+                  <Image
+                    src={
+                      isDropdownActive
+                        ? '/images/icon-carot-up.svg'
+                        : '/images/icon-carot-down.svg'
+                    }
+                    alt={isDropdownActive ? 'Close Dropdown' : 'Open Dropdown'}
+                    width={20}
+                    height={10}
+                  />
+                </DropdownCarot>
               </HeaderNavItem>
               <DropdownContainer ref={dropdownRef} active={isDropdownActive}>
                 <li>
