@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import NextLink from 'next/link'
 
 import {
@@ -16,7 +15,7 @@ const Footer = () => {
     <FooterWrapper as="footer">
       <FooterContainer thin>
         <BrandRow>
-          <Image
+          <img
             src="/logo.png"
             alt="Bankless Community Logo"
             width={60}
@@ -33,7 +32,7 @@ const Footer = () => {
           <IconsCol>
             <NextLink href="#">
               <a>
-                <Image
+                <img
                   src="/images/icon-social-medium.svg"
                   alt="Medium Icon"
                   width={48}
@@ -43,7 +42,7 @@ const Footer = () => {
             </NextLink>
             <NextLink href="#">
               <a>
-                <Image
+                <img
                   src="/images/icon-social-substack.svg"
                   alt="Substack Icon"
                   width={25}
@@ -53,7 +52,7 @@ const Footer = () => {
             </NextLink>
             <NextLink href="#">
               <a>
-                <Image
+                <img
                   src="/images/icon-social-discord.svg"
                   alt="Discord Icon"
                   width={32}

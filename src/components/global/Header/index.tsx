@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import NextLink from 'next/link'
-import Image from 'next/image'
 
 import { useDetectOutsideClick } from 'src/utils/useDetectOutsideClick'
 
@@ -39,7 +38,7 @@ const Header = ({ currentPage = '' }) => {
       <HeaderContainer thin>
         <HeaderBrandContainer>
           <MobileNavButton>
-            <Image
+            <img
               src={
                 isMobileNavActive
                   ? '/images/icon-close.svg'
@@ -54,7 +53,7 @@ const Header = ({ currentPage = '' }) => {
           <LogoContainer>
             <NextLink href="/">
               <a>
-                <Image
+                <img
                   src="/logo.png"
                   alt="Bankless Community Logo"
                   width={60}
@@ -101,7 +100,7 @@ const Header = ({ currentPage = '' }) => {
               >
                 Resources
                 <DropdownCarot>
-                  <Image
+                  <img
                     src={
                       isDropdownActive
                         ? '/images/icon-carot-up.svg'
