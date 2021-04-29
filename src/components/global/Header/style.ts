@@ -35,7 +35,7 @@ export const HeaderNavContainer = styled.div`
 export const HeaderNav = styled.nav`
   @media (max-width: ${breakpoints.lg}) {
     background: ${colors.black};
-    opacity: ${({ active }) => (active ? 1 : 0)};
+    opacity: ${({ active }) => (active ? 0.95 : 0)};
     visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
     transform: ${({ active }) =>
       active ? 'translateX(0)' : 'translateX(-20px)'};
@@ -68,7 +68,7 @@ export const HeaderNavItem = styled.a`
 export const DropdownNavItem = styled.div`
   display: inline-block;
   position: relative;
-  padding-right: 50px;
+  padding-right: 80px;
 `
 export const DropdownContainer = styled.ul`
   display: flex;
@@ -76,7 +76,6 @@ export const DropdownContainer = styled.ul`
   visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
   flex-direction: column;
   align-items: center;
-  padding: 20px 15px;
   position: absolute;
   list-style: none;
   background: ${colors.black};
@@ -84,6 +83,11 @@ export const DropdownContainer = styled.ul`
   transform: ${({ active }) =>
     active ? 'translateY(0)' : 'translateY(-20px)'};
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  padding: 10px 25px 10px 30px;
+
+  @media (min-width: ${breakpoints.lg}) {
+    padding: 20px 15px;
+  }
 
   a {
     color: ${colors.white};
