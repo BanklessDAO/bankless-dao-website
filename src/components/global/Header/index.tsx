@@ -1,37 +1,75 @@
+import { useRef, useState } from 'react'
 import NextLink from 'next/link'
-import Image from 'next/image'
+
+import { useDetectOutsideClick } from 'src/utils/useDetectOutsideClick'
 
 import ConnectWalletButton from './ConnectWalletButton'
 import {
   HeaderWrapper,
   HeaderContainer,
+  MobileNavButton,
+  LogoContainer,
   HeaderBrandContainer,
   HeaderNavContainer,
+  HeaderNav,
   HeaderNavItem,
+  DropdownCarot,
+  DropdownNavItem,
+  DropdownContainer,
 } from './style'
 
 const Header = ({ currentPage = '' }) => {
+  const dropdownRef = useRef(null)
+  const [isDropdownActive, setDropdownIsActive] = useDetectOutsideClick(
+    dropdownRef,
+    false
+  )
+  const handleDropdownClick = () => setDropdownIsActive(!isDropdownActive)
+
+  const handleDropdownItemClick = () => {
+    setDropdownIsActive(!isDropdownActive)
+    setMobileNavIsActive(false)
+  }
+
+  const [isMobileNavActive, setMobileNavIsActive] = useState(false)
+  const handleMobileNavClick = () => setMobileNavIsActive(!isMobileNavActive)
   return (
     <HeaderWrapper as="header">
       <HeaderContainer thin>
         <HeaderBrandContainer>
-          <NextLink href="/">
-            <a>
-              <Image
-                src="/logo.png"
-                alt="Bankless Community Logo"
-                width={60}
-                height={60}
-              />
-            </a>
-          </NextLink>
+          <MobileNavButton>
+            <img
+              src={
+                isMobileNavActive
+                  ? '/images/icon-close.svg'
+                  : '/images/icon-mobile-nav.svg'
+              }
+              alt="Open Mobile Nav"
+              width={30}
+              height={30}
+              onClick={handleMobileNavClick}
+            />
+          </MobileNavButton>
+          <LogoContainer>
+            <NextLink href="/">
+              <a>
+                <img
+                  src="/logo.png"
+                  alt="Bankless Community Logo"
+                  width={60}
+                  height={60}
+                />
+              </a>
+            </NextLink>
+          </LogoContainer>
         </HeaderBrandContainer>
         <HeaderNavContainer>
-          <nav>
+          <HeaderNav active={isMobileNavActive}>
             <NextLink href="/claim">
               <HeaderNavItem
                 tabIndex="0"
                 active={currentPage.includes('/claim')}
+                onClick={() => setMobileNavIsActive(false)}
               >
                 Claim
               </HeaderNavItem>
@@ -40,6 +78,7 @@ const Header = ({ currentPage = '' }) => {
               <HeaderNavItem
                 tabIndex="0"
                 active={currentPage.includes('governance')}
+                onClick={() => setMobileNavIsActive(false)}
               >
                 Governance
               </HeaderNavItem>
@@ -48,19 +87,49 @@ const Header = ({ currentPage = '' }) => {
               <HeaderNavItem
                 tabIndex="0"
                 active={currentPage.includes('mission')}
+                onClick={() => setMobileNavIsActive(false)}
               >
                 Mission
               </HeaderNavItem>
             </NextLink>
-            <NextLink href="/resources">
+            <DropdownNavItem>
               <HeaderNavItem
                 tabIndex="0"
                 active={currentPage.includes('resources')}
+                onClick={handleDropdownClick}
               >
                 Resources
+                <DropdownCarot>
+                  <img
+                    src={
+                      isDropdownActive
+                        ? '/images/icon-carot-up.svg'
+                        : '/images/icon-carot-down.svg'
+                    }
+                    alt={isDropdownActive ? 'Close Dropdown' : 'Open Dropdown'}
+                    width={20}
+                    height={10}
+                  />
+                </DropdownCarot>
               </HeaderNavItem>
-            </NextLink>
-          </nav>
+              <DropdownContainer ref={dropdownRef} active={isDropdownActive}>
+                <li>
+                  <NextLink href="#">
+                    <a onClick={handleDropdownItemClick}>
+                      How to claim your Bankless Badge
+                    </a>
+                  </NextLink>
+                </li>
+                <li>
+                  <NextLink href="#">
+                    <a onClick={handleDropdownItemClick}>
+                      How to use your Bankless Badge
+                    </a>
+                  </NextLink>
+                </li>
+              </DropdownContainer>
+            </DropdownNavItem>
+          </HeaderNav>
           <ConnectWalletButton isConnected={false} />
         </HeaderNavContainer>
       </HeaderContainer>
