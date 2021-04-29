@@ -1,5 +1,4 @@
 import NextLink from 'next/link'
-import Image from 'next/image'
 import Button from 'src/components/parts/Button'
 import {
   SectionWrapper,
@@ -25,7 +24,7 @@ const Section = () => {
             </Paragraph>
           </Col1>
           <Col2>
-            <Image
+            <img
               src="/images/token-3d.png"
               alt="Token Render Art"
               width="210"
@@ -64,7 +63,7 @@ const Section = () => {
             </NextLink>
           </Col1>
           <Col2>
-            <Image
+            <img
               src="/images/token-distribution-chart.png"
               alt="Token Render Art"
               width="308"

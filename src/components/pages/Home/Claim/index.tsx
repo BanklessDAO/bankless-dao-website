@@ -1,5 +1,4 @@
 import NextLink from 'next/link'
-import Image from 'next/image'
 import Button from 'src/components/parts/Button'
 import {
   SectionWrapper,
@@ -32,7 +31,7 @@ const Section = () => {
               <SubHeading>Check if you’re eligible to receive BANK</SubHeading>
             </div>
             <ImageContainer>
-              <Image
+              <img
                 src="/images/icon-eligible.png"
                 alt="Eligibility Icon"
                 width="110"
@@ -51,7 +50,7 @@ const Section = () => {
               <Subtext>50k BANK required</Subtext>
             </div>
             <ImageContainer>
-              <Image
+              <img
                 src="/images/icon-discord.png"
                 alt="Discord Icon"
                 width="101"

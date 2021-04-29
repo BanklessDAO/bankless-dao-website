@@ -62,8 +62,8 @@ export const fontStyles = {
   `,
   Tiny: css`
     font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
+    font-size: 13px;
+    line-height: 18px;
   `,
 }
 
