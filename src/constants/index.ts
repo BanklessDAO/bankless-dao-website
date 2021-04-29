@@ -85,3 +85,30 @@ export const RPC_URLS = {
 }
 
 export const INFURA_ID = '94570b7a36aa45ffbb728931698d2d85'
+
+export const MERKLE_PROOFS = {
+  '1': {
+    merkleRoot:
+      '0x68de9ea8bc4f9376714cd180a888b051634a2e2d775af9e29d911fe191624eba',
+    tokenTotal: '0x0100',
+    claims: {
+      '0xEC3281124d4c2FCA8A88e3076C1E7749CfEcb7F2': {
+        index: 0,
+        amount: '0x0100',
+        proof: [],
+      },
+    },
+  },
+  '5': {
+    merkleRoot:
+      '0xb89da911b314b6ea76c86eda327272813e3e4b26a4ef1a2d1098a57749af73b5',
+    tokenTotal: '0x27797f26d671c7',
+    claims: {
+      '0xEC3281124d4c2FCA8A88e3076C1E7749CfEcb7F2': {
+        index: 0,
+        amount: '0x27797F26D671C7',
+        proof: [],
+      },
+    },
+  },
+}

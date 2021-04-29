@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import merkle from 'src/root.json'
+import merkle from 'src/constants/roots.json'
 
 export default async function handler(
   req: NextApiRequest,
