@@ -6,7 +6,7 @@ export interface PageMetaProps {
   url: string
 }
 
-const Head = ({ title = '', description = '', url = '' }: PageMetaProps) => {
+const Head = ({ title = '', description = '' }: PageMetaProps) => {
   // TODO social images
   return (
     <NextHead>

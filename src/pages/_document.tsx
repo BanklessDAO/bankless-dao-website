@@ -40,7 +40,9 @@ class BanklessDocument extends Document {
           <link rel="stylesheet" type="text/css" href="/fonts/fonts.css" />
         </Head>
         <body>
-          <noscript>Oops, you'll need Javascript to run this site.</noscript>
+          <noscript>
+            Oops, you&apos;ll need Javascript to run this site.
+          </noscript>
           <Main />
           <NextScript />
         </body>

@@ -1,8 +1,8 @@
 import { css } from 'styled-components'
 
 export const colors = {
-  white: '#FFF',
-  black: '#111',
+  white: '#FFFFFF',
+  black: '#111111',
   gray: '#4F4F4F',
   darkgray: '#313131',
   lightGray: '#C4C4C4',

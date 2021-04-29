@@ -61,7 +61,7 @@ const Header = ({ currentPage = '' }) => {
               </HeaderNavItem>
             </NextLink>
           </nav>
-          <ConnectWalletButton isConnected={false} />
+          <ConnectWalletButton />
         </HeaderNavContainer>
       </HeaderContainer>
     </HeaderWrapper>
