@@ -60,6 +60,16 @@ const Footer = () => {
                 />
               </a>
             </NextLink>
+            <NextLink href="#">
+              <a>
+                <img
+                  src="/images/icon-social-twitter.svg"
+                  alt="Twitter Icon"
+                  width={35}
+                  height={28}
+                />
+              </a>
+            </NextLink>
           </IconsCol>
           <CopyrightCol>
             &copy; {new Date().getFullYear()} Bankless DAO

@@ -17,11 +17,14 @@ export const SectionContainer = styled(_Container)`
 export const Col2Row = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: ${breakpoints.md}) {
+    flex-direction: column-reverse;
+  }
 `
 export const Col1 = styled.div`
   flex: 3;
   @media (min-width: ${breakpoints.md}) {
-    flex: 2;
+    flex: 1;
   }
 `
 export const Col2 = styled.div`
@@ -29,12 +32,15 @@ export const Col2 = styled.div`
   justify-content: center;
   flex: 2;
   @media (min-width: ${breakpoints.md}) {
-    flex: 3;
+    flex: 1;
   }
 `
 export const Heading = styled.h2`
   ${fontStyles.H2}
   margin-bottom: 30px;
+  @media (max-width: ${breakpoints.md}) {
+    margin-top: 30px;
+  }
 `
 export const Paragraph = styled.p`
   ${fontStyles.P}

@@ -33,5 +33,6 @@ export const Description = styled.p`
 export const ButtonContainer = styled.div`
   button {
     margin-right: 30px;
+    margin-bottom: 15px;
   }
 `

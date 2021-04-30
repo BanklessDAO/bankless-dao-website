@@ -16,12 +16,18 @@ export const SectionContainer = styled(_Container)`
   }
 `
 export const Heading = styled.h2`
-  ${fontStyles.H1}
+  ${fontStyles.H1m}
   margin-bottom: 30px;
+  @media (min-width: ${breakpoints.md}) {
+    ${fontStyles.H1}
+  }
 `
 export const SubHeading = styled.h3`
-  ${fontStyles.H2}
+  ${fontStyles.H2m}
   color: ${colors.gray};
+  @media (min-width: ${breakpoints.md}) {
+    ${fontStyles.H2}
+  }
 `
 export const Paragraph = styled.p`
   ${fontStyles.P}
@@ -37,12 +43,18 @@ export const FatDate = styled.strong`
 `
 export const Subtext = styled.strong`
   display: block;
-  ${fontStyles.H3}
+  ${fontStyles.H3m}
   color: ${colors.black};
+  @media (min-width: ${breakpoints.md}) {
+    ${fontStyles.H3}
+  }
 `
 export const Col2Row = styled.div`
   display: flex;
   justify-content: center;
+  @media (max-width: ${breakpoints.md}) {
+    flex-direction: column;
+  }
 `
 export const Col1 = styled.div`
   flex: 1;
@@ -52,6 +64,9 @@ export const Col1 = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 600px;
+  @media (max-width: ${breakpoints.md}) {
+    margin-bottom: 50px;
+  }
 `
 export const ImageContainer = styled.div`
   height: 200px;

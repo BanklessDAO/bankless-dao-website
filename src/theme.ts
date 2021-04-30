@@ -46,7 +46,7 @@ export const fontStyles = {
     line-height: 26px;
   `,
   H3m: css`
-    font-weight: bold;
+    font-weight: normal;
     font-size: 18px;
     line-height: 24px;
   `,
