@@ -7,8 +7,8 @@ export const DefaultProviderName = 'DEFAULT'
 
 export const MERKLE_DISTRIBUTOR_ADDRESS = {
   1: '0x0000000000000000000000000000000000000000',
-  //  5: '0x2abF2d32aCF29551eCa2097BE2E49e3249c6E08e'  // <- This goerli one has claims no-oped - claiming leaves it claimable
-  5: '0xEaf539042bcFF43d8340eb5673A9ce726fFb498A', // <- This goerli one has claims enabled - claiming will make it unclaimable
+  5: '0x2abF2d32aCF29551eCa2097BE2E49e3249c6E08e', // <- This goerli one has claims no-oped - claiming leaves it claimable
+  // 5: '0xEaf539042bcFF43d8340eb5673A9ce726fFb498A', // <- This goerli one has claims enabled - claiming will make it unclaimable
 }
 export const MERKLE_DISTRIBUTOR_ABI = [
   {

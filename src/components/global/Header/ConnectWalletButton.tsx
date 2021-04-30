@@ -1,11 +1,9 @@
 import Web3Modal from 'web3modal'
 import { useState, useEffect } from 'react'
-import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import Button from 'src/components/parts/Button'
 import { useWalletWeb3React } from 'src/hooks'
-import { INFURA_ID } from 'src/constants'
-import { walletconnect, injected } from 'src/utils'
+import { injected } from 'src/utils'
 
 const WalletButton = () => {
   const walletWeb3ReactContext = useWalletWeb3React()
@@ -18,15 +16,6 @@ const WalletButton = () => {
         network: 'mainnet',
         cacheProvider: false,
         providerOptions: {
-          walletconnect: {
-            package: WalletConnectProvider,
-            options: {
-              infuraId: INFURA_ID,
-            },
-            connector: async () => {
-              return 'walletconnect'
-            },
-          },
           injected: {
             package: null,
             connector: async () => {
@@ -37,12 +26,8 @@ const WalletButton = () => {
       })
       web3Modal
         .connect()
-        .then((provider) => {
-          if (provider === 'walletconnect') {
-            return walletWeb3ReactContext.activate(walletconnect)
-          } else {
-            return walletWeb3ReactContext.activate(injected)
-          }
+        .then(() => {
+          return walletWeb3ReactContext.activate(injected)
         })
         .then(() => {
           setConnectClick(false)

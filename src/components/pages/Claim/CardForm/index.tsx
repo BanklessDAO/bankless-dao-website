@@ -30,7 +30,7 @@ const Section = () => {
           <Card.Header>
             <Card.Header.Title>Claim BANK Token</Card.Header.Title>
             <Card.Header.Amount>
-              {claimData ? displayNumber : '0'} BANK
+              {claimData && !done ? displayNumber : '0'} BANK
             </Card.Header.Amount>
           </Card.Header>
           <Card.Body>
