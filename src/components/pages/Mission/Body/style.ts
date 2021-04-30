@@ -24,8 +24,11 @@ export const Heading = styled.h1`
   }
 `
 export const Subheading = styled.h3`
-  ${fontStyles.H1m}
+  ${fontStyles.H2m}
   margin-bottom: 30px;
+  @media (min-width: ${breakpoints.md}) {
+    ${fontStyles.H1m}
+  }
 `
 export const Paragraph = styled.p`
   ${fontStyles.Pm}
