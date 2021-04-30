@@ -4,7 +4,6 @@ import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { RPC_URLS } from '../constants'
 
 import { InjectedConnector } from '@web3-react/injected-connector'
-import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { NetworkConnector } from '@web3-react/network-connector'
 
 export function isAddress(value: any): string | false {
@@ -45,12 +44,6 @@ export function getSigner(
 ): JsonRpcSigner {
   return library.getSigner(account).connectUnchecked()
 }
-
-export const walletconnect = new WalletConnectConnector({
-  rpc: { 1: RPC_URLS[1] },
-  bridge: 'https://bridge.walletconnect.org',
-  qrcode: true,
-})
 
 export const injected = new InjectedConnector({ supportedChainIds: [1, 5] })
 
