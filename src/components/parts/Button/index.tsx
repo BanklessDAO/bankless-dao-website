@@ -4,6 +4,7 @@ import {
   PinkButton,
   WhiteButton,
   TransparentButton,
+  DiscordButton,
 } from './style'
 
 const Button = ({
@@ -36,6 +37,12 @@ const Button = ({
       <WhiteButton thin={thin} shadow={shadow} {...restProps}>
         {children}
       </WhiteButton>
+    )
+  if ('discord' === theme)
+    return (
+      <DiscordButton thin={thin} shadow={shadow} {...restProps}>
+        {children}
+      </DiscordButton>
     )
   return (
     <RedButton thin={thin} shadow={shadow} {...restProps}>

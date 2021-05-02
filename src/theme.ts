@@ -10,6 +10,7 @@ export const colors = {
   pink: 'rgba(237, 28, 36, 0.3)',
   green: '#44CB39',
   lime: 'rgba(68, 203, 57, 0.3)',
+  discord: '#7289DA',
 }
 
 export const gradients = {

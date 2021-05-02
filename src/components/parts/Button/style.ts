@@ -48,3 +48,9 @@ export const GreenButton = styled(Button)`
   background: ${colors.lime};
   border-color: ${colors.green};
 `
+
+export const DiscordButton = styled(Button)`
+  color: ${colors.white};
+  background: ${colors.discord};
+  border-color: ${colors.white};
+`

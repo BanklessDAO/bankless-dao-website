@@ -90,10 +90,10 @@ const Section = () => {
               </Button>
             </a>
           </NextLink>
-          <NextLink href="/join">
+          <NextLink href="https://discord.gg/CGZaAReMxh">
             <a>
-              <Button theme="transparent" shadow>
-                Join the DAO
+              <Button theme="discord" shadow>
+                Join the Discord
               </Button>
             </a>
           </NextLink>

@@ -30,7 +30,7 @@ const Footer = () => {
         </CopyRow>
         <CopyrightRow>
           <IconsCol>
-            <NextLink href="#">
+            <NextLink href="https://medium.com/bankless-dao">
               <a>
                 <img
                   src="/images/icon-social-medium.svg"
@@ -40,7 +40,7 @@ const Footer = () => {
                 />
               </a>
             </NextLink>
-            <NextLink href="#">
+            <NextLink href="https://banklessdao.substack.com/">
               <a>
                 <img
                   src="/images/icon-social-substack.svg"
@@ -50,7 +50,7 @@ const Footer = () => {
                 />
               </a>
             </NextLink>
-            <NextLink href="#">
+            <NextLink href="https://discord.gg/CGZaAReMxh">
               <a>
                 <img
                   src="/images/icon-social-discord.svg"
@@ -60,13 +60,23 @@ const Footer = () => {
                 />
               </a>
             </NextLink>
-            <NextLink href="#">
+            <NextLink href="https://twitter.com/banklessDAO">
               <a>
                 <img
                   src="/images/icon-social-twitter.svg"
                   alt="Twitter Icon"
                   width={35}
                   height={28}
+                />
+              </a>
+            </NextLink>
+            <NextLink href="https://github.com/BanklessHQ">
+              <a>
+                <img
+                  src="/images/icon-social-github.svg"
+                  alt="Github Icon"
+                  width={32}
+                  height={31}
                 />
               </a>
             </NextLink>

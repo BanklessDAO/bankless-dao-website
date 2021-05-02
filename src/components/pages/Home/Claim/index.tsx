@@ -57,7 +57,7 @@ const Section = () => {
                 height="110"
               />
             </ImageContainer>
-            <NextLink href="#">
+            <NextLink href="https://discord.gg/CGZaAReMxh">
               <a>
                 <Button theme="white">Join Discord</Button>
               </a>
