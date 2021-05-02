@@ -5,12 +5,14 @@ export const colors = {
   black: '#111',
   gray: '#4F4F4F',
   darkgray: '#313131',
-  lightGray: '#C4C4C4',
+  lightGray: '#F2F2F2',
   red: '#D02128',
+  redder: '#FF000A',
   pink: 'rgba(237, 28, 36, 0.3)',
   green: '#44CB39',
   lime: 'rgba(68, 203, 57, 0.3)',
   discord: '#7289DA',
+  blue: '#393FCB',
 }
 
 export const gradients = {

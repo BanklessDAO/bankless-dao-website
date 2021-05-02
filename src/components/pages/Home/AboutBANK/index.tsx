@@ -58,7 +58,7 @@ const Section = () => {
             </Paragraph>
             <NextLink href="#">
               <a>
-                <Button theme="transparent">Genesis Proposal</Button>
+                <Button theme="gray">Genesis Proposal</Button>
               </a>
             </NextLink>
           </Col1>

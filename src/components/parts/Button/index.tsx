@@ -3,7 +3,7 @@ import {
   GreenButton,
   PinkButton,
   WhiteButton,
-  TransparentButton,
+  GrayButton,
   DiscordButton,
 } from './style'
 
@@ -26,12 +26,6 @@ const Button = ({
         {children}
       </PinkButton>
     )
-  if ('transparent' === theme)
-    return (
-      <TransparentButton thin={thin} shadow={shadow} {...restProps}>
-        {children}
-      </TransparentButton>
-    )
   if ('white' === theme)
     return (
       <WhiteButton thin={thin} shadow={shadow} {...restProps}>
@@ -43,6 +37,12 @@ const Button = ({
       <DiscordButton thin={thin} shadow={shadow} {...restProps}>
         {children}
       </DiscordButton>
+    )
+  if ('gray' === theme)
+    return (
+      <GrayButton thin={thin} shadow={shadow} {...restProps}>
+        {children}
+      </GrayButton>
     )
   return (
     <RedButton thin={thin} shadow={shadow} {...restProps}>
