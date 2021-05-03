@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import NextLink from 'next/link'
 
-import { useDetectOutsideClick } from 'src/utils/useDetectOutsideClick'
+import { useDetectOutsideClick } from 'src/hooks/useDetectOutsideClick'
 
 import ConnectWalletButton from './ConnectWalletButton'
 import {
@@ -130,7 +130,7 @@ const Header = ({ currentPage = '' }) => {
               </DropdownContainer>
             </DropdownNavItem>
           </HeaderNav>
-          <ConnectWalletButton isConnected={false} />
+          <ConnectWalletButton />
         </HeaderNavContainer>
       </HeaderContainer>
     </HeaderWrapper>
