@@ -14,7 +14,7 @@ const WalletButton = () => {
     if (connectClick) {
       const web3Modal = new Web3Modal({
         network: 'mainnet',
-        cacheProvider: false,
+        cacheProvider: true,
         providerOptions: {
           injected: {
             package: null,

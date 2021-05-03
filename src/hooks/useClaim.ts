@@ -1,8 +1,8 @@
 // import { BANK } from '../constants/index'
 // import { TransactionResponse } from '@ethersproject/providers'
 import { useEffect, useState } from 'react'
-import { useActiveWeb3React, useDefaultWeb3React } from './'
-import { useMerkleDistributorContract } from './contracts'
+import { useActiveWeb3React, useDefaultWeb3React } from '.'
+import { useMerkleDistributorContract } from './useMerkleDistributorContract'
 import { isAddress } from '../utils'
 
 interface UserClaimData {

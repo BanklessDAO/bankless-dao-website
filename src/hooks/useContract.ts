@@ -1,24 +1,11 @@
 import { Contract } from '@ethersproject/contracts'
 import { useMemo } from 'react'
 
-import { useActiveWeb3React } from './index'
-import {
-  MERKLE_DISTRIBUTOR_ADDRESS,
-  MERKLE_DISTRIBUTOR_ABI,
-} from '../constants'
 import { getContract } from '../utils'
-
-export function useMerkleDistributorContract(): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(
-    chainId ? MERKLE_DISTRIBUTOR_ADDRESS[chainId] : undefined,
-    MERKLE_DISTRIBUTOR_ABI,
-    true
-  )
-}
+import { useActiveWeb3React } from './index'
 
 // returns null on errors
-function useContract(
+export function useContract(
   address: string | undefined,
   ABI: any,
   withSignerIfPossible = true

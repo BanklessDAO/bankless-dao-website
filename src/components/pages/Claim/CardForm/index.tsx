@@ -3,7 +3,7 @@ import Button from 'src/components/parts/Button'
 import TextInput from 'src/components/parts/TextInput'
 import { useActiveWeb3React, useWalletWeb3React } from 'src/hooks'
 import { useEffect, useState } from 'react'
-import { useClaim, useUserClaimData } from 'src/hooks/claim'
+import { useClaim, useUserClaimData } from 'src/hooks/useClaim'
 import { toFixed } from 'src/utils'
 const Section = () => {
   const walletConnected = useWalletWeb3React().active
