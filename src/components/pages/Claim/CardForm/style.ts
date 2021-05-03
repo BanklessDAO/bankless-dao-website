@@ -8,11 +8,7 @@ export const SectionWrapper = styled(_Wrapper)`
 `
 export const SectionContainer = styled(_Container)`
   padding-top: 100px;
-  padding-bottom: 100px;
-  @media (min-width: ${breakpoints.md}) {
-    padding-top: 215px;
-    padding-bottom: 215px;
-  }
+  padding-bottom: 300px;
 `
 export const Card = styled.div`
   max-width: 700px;

@@ -1,17 +1,29 @@
 import NextLink from 'next/link'
 import Button from 'src/components/parts/Button'
-import { SectionWrapper, SectionContainer, Heading, Paragraph } from './style'
+import {
+  SectionWrapper,
+  SectionContainer,
+  Col1,
+  Col2,
+  Heading,
+  Subheading,
+  Paragraph,
+} from './style'
 
 const Section = () => {
   return (
     <SectionWrapper as="section">
       <SectionContainer>
-        <div></div>
-        <div>
+        <Col1
+          src="/images/node-graph.png"
+          srcset="/images/node-graph-mobile.png 320w, /images/node-graph.png 768w"
+          alt="Node Graph Illustration"
+        />
+        <Col2>
           <Heading>Bankless DAO</Heading>
-          <Paragraph>
+          <Subheading>
             We have entered an era of internet-scale organizations.
-          </Paragraph>
+          </Subheading>
           <Paragraph>
             Ethereum's coordination power allows internet strangers with shared
             values and goals to organize under a common banner, and enables them
@@ -26,19 +38,19 @@ const Section = () => {
             With this, humanity has unlocked the capability of building new,
             internet-scaled institutions aligned with the values of its members.
           </Paragraph>
-          <Paragraph
+          <Subheading
             css={`
-              margin-bottom: 50px;
+              margin-bottom: 30px;
             `}
           >
             We need this now, more than ever...{' '}
-          </Paragraph>
+          </Subheading>
           <NextLink href="/mission">
             <a>
               <Button theme="white">Read More</Button>
             </a>
           </NextLink>
-        </div>
+        </Col2>
       </SectionContainer>
     </SectionWrapper>
   )
