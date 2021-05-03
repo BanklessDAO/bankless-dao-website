@@ -16,7 +16,7 @@ const Footer = () => {
       <FooterContainer thin>
         <BrandRow>
           <img
-            src="/logo.png"
+            src="/logo.svg"
             alt="Bankless Community Logo"
             width={60}
             height={60}

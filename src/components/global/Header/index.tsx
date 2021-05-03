@@ -54,7 +54,7 @@ const Header = ({ currentPage = '' }) => {
             <NextLink href="/">
               <a>
                 <img
-                  src="/logo.png"
+                  src="/logo.svg"
                   alt="Bankless Community Logo"
                   width={60}
                   height={60}
