@@ -4,15 +4,15 @@ import TextInput from 'src/components/parts/TextInput'
 import { useActiveWeb3React, useWalletWeb3React } from 'src/hooks'
 import { useEffect, useState } from 'react'
 import { useClaim, useUserClaimData } from 'src/hooks/useClaim'
-import { toFixed } from 'src/utils'
 const Section = () => {
   const walletConnected = useWalletWeb3React().active
   const activeAccount = useActiveWeb3React().account
   const [account, setAccount] = useState('')
   const claimData = useUserClaimData(account)
   const displayNumber = claimData
-    ? toFixed((parseInt(claimData.amount) / 10 ** 18).toPrecision(6))
-    : undefined
+    ? Number(Number(claimData.amount) / 10 ** 18).toLocaleString('en')
+    : 0
+
   const [pending, setPending] = useState(false)
   const [done, setDone] = useState(false)
   useEffect(() => {
