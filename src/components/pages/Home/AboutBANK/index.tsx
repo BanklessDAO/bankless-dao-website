@@ -17,11 +17,20 @@ const Section = () => {
         <Col2Row>
           <Col1>
             <Heading>About BANK</Heading>
-            <Paragraph>
+            <Paragraph
+              css={`
+                margin-bottom: 20px;
+              `}
+            >
               BANK is the native token of the Bankless DAO, which acts as a tool
               to coordinate activity and is awarded to community members for
               participation in the bankless movement.
             </Paragraph>
+            <NextLink href="#">
+              <a>
+                <Button theme="gray">Read Announcement Post</Button>
+              </a>
+            </NextLink>
           </Col1>
           <Col2>
             <img

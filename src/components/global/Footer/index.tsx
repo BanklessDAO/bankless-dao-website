@@ -4,7 +4,6 @@ import {
   FooterWrapper,
   FooterContainer,
   BrandRow,
-  CopyRow,
   CopyrightRow,
   IconsCol,
   CopyrightCol,
@@ -23,11 +22,6 @@ const Footer = () => {
           />
           <strong>Bankless DAO</strong>
         </BrandRow>
-        <CopyRow>
-          Bankless DAO is a decentralized community driving adoption and
-          awareness of bankless money systems like Ethereum, Bitcoin and DeFi
-          through media, culture, and education.
-        </CopyRow>
         <CopyrightRow>
           <IconsCol>
             <NextLink href="https://medium.com/bankless-dao">

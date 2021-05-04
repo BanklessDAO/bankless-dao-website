@@ -3,7 +3,7 @@ import { colors } from 'src/theme'
 
 const Button = styled.button`
   ${({ shadow }) => shadow && 'box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.13);'};
-  padding: ${({ thin }) => (thin ? '5px 8px' : '8px 40px')};
+  padding: ${({ thin }) => (thin ? '5px 8px' : '8px 20px')};
   font-size: 19px;
   line-height: 26px;
   border-radius: 6px;
