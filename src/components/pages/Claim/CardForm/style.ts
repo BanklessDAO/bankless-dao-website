@@ -29,8 +29,12 @@ Card.Header.Title = styled.h1`
   color: ${colors.white};
 `
 Card.Header.Amount = styled.strong`
-  ${fontStyles.H1}
+  ${fontStyles.H1m}
   color: ${colors.red};
+
+  @media (min-width: ${breakpoints.md}) {
+    ${fontStyles.H1}
+  }
 `
 Card.Body = styled.div`
   padding: 30px;

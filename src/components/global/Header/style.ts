@@ -16,7 +16,7 @@ export const HeaderBrandContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 110px;
+  width: 95px;
   height: 60px;
 
   @media (min-width: ${breakpoints.lg}) {

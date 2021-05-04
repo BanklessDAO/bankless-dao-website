@@ -52,7 +52,7 @@ const Header = ({ currentPage = '' }) => {
           </MobileNavButton>
           <LogoContainer>
             <NextLink href="/">
-              <a>
+              <a onClick={() => setMobileNavIsActive(false)}>
                 <img
                   src="/logo.svg"
                   alt="Bankless Community Logo"
