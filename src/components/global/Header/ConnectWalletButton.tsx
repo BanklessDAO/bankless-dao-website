@@ -59,7 +59,7 @@ const WalletButton = () => {
 
   return (
     <React.Fragment>
-      {isConnected && rawBalance > 0 && (
+      {isConnected && (
         <Button
           theme="gradient"
           thin={true}
