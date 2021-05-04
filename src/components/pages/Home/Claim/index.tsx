@@ -7,7 +7,6 @@ import {
   SubHeading,
   Paragraph,
   FatDate,
-  Subtext,
   Col2Row,
   Col1,
   ImageContainer,
@@ -47,7 +46,6 @@ const Section = () => {
           <Col1>
             <div>
               <SubHeading>Use BANK to Join the Bankless Discord</SubHeading>
-              <Subtext>50k BANK required</Subtext>
             </div>
             <ImageContainer>
               <img

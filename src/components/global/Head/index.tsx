@@ -12,6 +12,7 @@ const Head = ({ title = '', description = '' }: PageMetaProps) => {
     <NextHead>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     </NextHead>
   )
 }
