@@ -74,7 +74,10 @@ const Header = ({ currentPage = '' }) => {
                 Claim
               </HeaderNavItem>
             </NextLink>
-            <NextLink href="https://snapshot.org/#/banklessvault.eth">
+            <NextLink
+              href="https://snapshot.org/#/banklessvault.eth"
+              passHref={true}
+            >
               <HeaderNavItem
                 tabIndex="0"
                 active={currentPage.includes('governance')}
