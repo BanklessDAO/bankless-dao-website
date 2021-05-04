@@ -90,7 +90,7 @@ const Section = () => {
               </Button>
             </a>
           </NextLink>
-          <NextLink href="https://discord.gg/CGZaAReMxh">
+          <NextLink href="https://discord.gg/bjPz2w9Zts ">
             <a>
               <Button theme="discord" shadow>
                 Join the Discord

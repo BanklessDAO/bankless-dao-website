@@ -16,7 +16,7 @@ export const HeaderBrandContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 110px;
+  width: 95px;
   height: 60px;
 
   @media (min-width: ${breakpoints.lg}) {
@@ -69,7 +69,7 @@ export const HeaderNavItem = styled.a`
   padding: 12px 30px;
   &:hover {
     cursor: pointer;
-    text-decoration: underline;
+    color: ${colors.red};
   }
 `
 export const DropdownCarot = styled.div`
@@ -107,7 +107,7 @@ export const DropdownContainer = styled.ul`
     margin-top: 5px;
     margin-bottom: 5px;
     &:hover {
-      text-decoration: underline;
+      color: ${colors.red};
     }
   }
 `
