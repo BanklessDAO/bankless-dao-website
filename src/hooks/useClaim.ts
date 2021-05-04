@@ -61,7 +61,9 @@ export function useUserClaimData(
         .then((resolvedAccount) => {
           setAccount(resolvedAccount)
         })
-        .catch()
+        .catch((e) => {
+          console.error(e)
+        })
     } else {
       setAccount(rawAccount)
     }

@@ -10,4 +10,4 @@ Bootstrapped with [NextJS](https://nextjs.org/), [Web3React](https://github.com/
 
 # Local Development
 
-Web3React doesn't like hot reload; use `yarn build` instead of `yarn dev` to make it work
+Web3React doesn't like hot reload; use `yarn build && yarn start` instead of `yarn dev` to make it work
