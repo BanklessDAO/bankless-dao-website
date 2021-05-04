@@ -7,7 +7,8 @@ const Button = styled.button`
   font-size: 19px;
   line-height: 26px;
   border-radius: 6px;
-  text-transform: uppercase;
+  text-transform: ${({ uppercase }) => (!uppercase ? 'none' : 'uppercase')};
+
   border-width: 1px;
   border-style: solid;
   cursor: pointer;

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 import Button from 'src/components/parts/Button'
 import { useWalletWeb3React } from 'src/hooks'
-import { injected } from 'src/utils'
+import { injected, shortenAddress } from 'src/utils'
 
 const WalletButton = () => {
   const walletWeb3ReactContext = useWalletWeb3React()
@@ -35,15 +35,19 @@ const WalletButton = () => {
         .catch()
     }
   }, [connectClick])
+  console.log(walletWeb3ReactContext)
   return (
     <Button
-      theme={isConnected ? 'lime' : 'pink'}
+      theme={isConnected ? 'green' : 'pink'}
       thin={true}
+      uppercase={false}
       onClick={() => {
         isConnected ? undefined : setConnectClick(true)
       }}
     >
-      {isConnected ? 'Connected' : 'Connect a Wallet'}
+      {isConnected
+        ? shortenAddress(walletWeb3ReactContext.account)
+        : 'Connect a Wallet'}
     </Button>
   )
 }
