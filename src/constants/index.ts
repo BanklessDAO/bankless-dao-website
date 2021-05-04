@@ -1,5 +1,5 @@
 export const TOKEN_ADDRESS = {
-  1: '0x6b175474e89094c44da98b954eedeac495271d0f',
+  1: '0x2d94aa3e47d9d5024503ca8491fce9a2fb4da198',
   5: '0xab8b6fFA66E1f2CD8938f1df14104600367de257',
 }
 
@@ -122,7 +122,7 @@ export const TOKEN_ABI = [
 ]
 
 export const MERKLE_DISTRIBUTOR_ADDRESS = {
-  1: '0x0000000000000000000000000000000000000000',
+  1: '0x9D1f1847582261bE41F5a54e8b60CAD21400C74f',
   5: '0x2abF2d32aCF29551eCa2097BE2E49e3249c6E08e', // <- This goerli one has claims no-oped - claiming leaves it claimable
   // 5: '0xEaf539042bcFF43d8340eb5673A9ce726fFb498A', // <- This goerli one has claims enabled - claiming will make it unclaimable
 }
