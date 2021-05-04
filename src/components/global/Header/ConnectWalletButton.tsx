@@ -42,21 +42,33 @@ const WalletButton = () => {
     }
   }, [connectClick])
 
-  // useEffect(() => {
-  //   console.log(modalOpen)
-  // }, [modalOpen])
   const rawBalance = 1231312300
   const commaBalance = Number(rawBalance).toLocaleString('en')
   const whaleBalance = trimCurrencyForWhales(rawBalance)
 
   return (
     <React.Fragment>
+      {isConnected && rawBalance > 0 && (
+        <Button
+          theme="gradient"
+          thin={true}
+          css={`
+            margin-right: 5px;
+          `}
+          onClick={() => {
+            isConnected && setModalOpen(!modalOpen)
+          }}
+        >
+          {whaleBalance} BANK
+        </Button>
+      )}
       <Button
         theme={isConnected ? 'green' : 'pink'}
         thin={true}
         uppercase={false}
+        disabled={isConnected}
         onClick={() => {
-          isConnected ? setModalOpen(!modalOpen) : setConnectClick(true)
+          isConnected ? null : setConnectClick(true)
         }}
       >
         {isConnected

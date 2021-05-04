@@ -14,7 +14,7 @@ export const TokenModal = styled.div`
   right: 0;
   margin: auto;
   max-width: 450px;
-  max-height: 500px;
+  max-height: 520px;
   list-style: none;
   background: ${gradients.grayred};
   color: ${colors.white};
