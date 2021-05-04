@@ -44,7 +44,7 @@ const Footer = () => {
                 />
               </a>
             </NextLink>
-            <NextLink href="https://discord.gg/CGZaAReMxh">
+            <NextLink href="https://discord.gg/bjPz2w9Zts ">
               <a>
                 <img
                   src="/images/icon-social-discord.svg"

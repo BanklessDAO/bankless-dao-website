@@ -26,7 +26,7 @@ const Section = () => {
               to coordinate activity and is awarded to community members for
               participation in the bankless movement.
             </Paragraph>
-            <NextLink href="#">
+            <NextLink href="https://medium.com/bankless-dao/announcing-bankless-dao-133220f5efd8">
               <a>
                 <Button theme="gray">Read Announcement Post</Button>
               </a>
@@ -65,7 +65,7 @@ const Section = () => {
               bestow Bankless, LLC with an allocation as described in the
               Genesis Proposal.
             </Paragraph>
-            <NextLink href="#">
+            <NextLink href="https://medium.com/bankless-dao/bankless-dao-genesis-proposal-18c24caf4485">
               <a>
                 <Button theme="gray">Genesis Proposal</Button>
               </a>

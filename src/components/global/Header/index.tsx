@@ -114,16 +114,19 @@ const Header = ({ currentPage = '' }) => {
               </HeaderNavItem>
               <DropdownContainer ref={dropdownRef} active={isDropdownActive}>
                 <li>
-                  <NextLink href="#">
-                    <a onClick={handleDropdownItemClick}>
-                      How to claim your Bankless Badge
-                    </a>
+                  <NextLink href="https://medium.com/bankless-dao/announcing-bankless-dao-133220f5efd8">
+                    <a onClick={handleDropdownItemClick}>Announcement Post</a>
                   </NextLink>
                 </li>
                 <li>
-                  <NextLink href="#">
+                  <NextLink href="https://medium.com/bankless-dao/bankless-dao-genesis-proposal-18c24caf4485">
+                    <a onClick={handleDropdownItemClick}>Genesis Proposal</a>
+                  </NextLink>
+                </li>
+                <li>
+                  <NextLink href="https://medium.com/bankless-dao/getting-started-with-bankless-dao-94b0b60e052e">
                     <a onClick={handleDropdownItemClick}>
-                      How to use your Bankless Badge
+                      Getting Started Guide
                     </a>
                   </NextLink>
                 </li>

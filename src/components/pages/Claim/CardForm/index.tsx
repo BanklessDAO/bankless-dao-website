@@ -46,7 +46,7 @@ const Section = () => {
                 </label>
                 <TextInput
                   name="address"
-                  placeholder="Wallet Address or ENS name"
+                  placeholder="Wallet Address / ENS name"
                   css={`
                     display: block;
                     width: 100%;
