@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { _Wrapper, _Container } from 'src/components/global/style'
-import { colors, fontStyles, gradients } from 'src/theme'
+import { colors, fontStyles, gradients, breakpoints } from 'src/theme'
 
 export const SectionWrapper = styled(_Wrapper)`
   background: ${gradients.grayred};
