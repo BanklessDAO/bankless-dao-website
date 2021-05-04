@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontStyles, breakpoints, gradients } from 'src/theme'
+import { colors, fontStyles, gradients } from 'src/theme'
 
 export const TokenModal = styled.div`
   display: flex;

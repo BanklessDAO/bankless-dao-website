@@ -7,6 +7,9 @@ import { useDetectOutsideClick } from 'src/hooks/useDetectOutsideClick'
 import { injected, shortenAddress, trimCurrencyForWhales } from 'src/utils'
 
 import { TokenModal } from './ConnectWalletModal/style'
+import { useTokenBalance } from 'src/hooks/token/useTokenBalance'
+import { useUserClaimData } from 'src/hooks/useClaim'
+import { useTokenSupply } from 'src/hooks/token/useTokenSupply'
 
 const WalletButton = () => {
   const walletWeb3ReactContext = useWalletWeb3React()
@@ -42,9 +45,17 @@ const WalletButton = () => {
     }
   }, [connectClick])
 
-  const rawBalance = 1231312300
+  const rawBalance = useTokenBalance(walletWeb3ReactContext.account) ?? 0
   const commaBalance = Number(rawBalance).toLocaleString('en')
   const whaleBalance = trimCurrencyForWhales(rawBalance)
+
+  const rawClaim = useUserClaimData(walletWeb3ReactContext.account ?? '')
+  const commaClaim = rawClaim
+    ? Number(Number(rawClaim.amount) / 10 ** 18).toLocaleString('en')
+    : 0
+
+  const rawSupply = useTokenSupply()
+  const commaSupply = Number(rawSupply).toLocaleString('en')
 
   return (
     <React.Fragment>
@@ -100,12 +111,12 @@ const WalletButton = () => {
             Balance: <span>{commaBalance} BANK</span>
           </TokenModal.StatLine>
           <TokenModal.StatLine>
-            Unclaimed: <span>0 BANK</span>
+            Unclaimed: <span>{commaClaim} BANK</span>
           </TokenModal.StatLine>
         </TokenModal.BalanceRow>
         <TokenModal.SupplyRow>
           <TokenModal.StatLine>
-            Total supply: <span>1B BANK</span>
+            Total supply: <span>{commaSupply} BANK</span>
           </TokenModal.StatLine>
         </TokenModal.SupplyRow>
       </TokenModal>
