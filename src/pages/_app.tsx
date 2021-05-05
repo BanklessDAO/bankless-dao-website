@@ -11,16 +11,23 @@ function getLibrary(provider) {
   return new ethers.providers.Web3Provider(provider) // this will vary according to whether you use e.g. ethers or web3.js
 }
 
-const Web3ReactProviderDefault = createWeb3ReactRoot(DefaultProviderName)
+// issue seems due to web3react provider trying to run on the server due to next's SSR
+// typeof window !== 'undefined' checks if code is on the browser or server
+// ternary checks to see if on browser or server and returns null if on server
+
+const Web3ReactProviderDefault =
+  typeof window !== 'undefined' && createWeb3ReactRoot(DefaultProviderName)
 
 const BanklessApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
-      <Web3ReactProviderDefault getLibrary={getLibrary}>
-        <SiteLayout pageMeta={pageProps.pageMeta || { defaultPageMeta }}>
-          <Component {...pageProps} />
-        </SiteLayout>
-      </Web3ReactProviderDefault>
+      {typeof window !== 'undefined' ? (
+        <Web3ReactProviderDefault getLibrary={getLibrary}>
+          <SiteLayout pageMeta={pageProps.pageMeta || { defaultPageMeta }}>
+            <Component {...pageProps} />
+          </SiteLayout>
+        </Web3ReactProviderDefault>
+      ) : null}
     </Web3ReactProvider>
   )
 }
