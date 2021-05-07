@@ -79,24 +79,29 @@ export const DropdownCarot = styled.div`
 export const DropdownNavItem = styled.div`
   display: inline-block;
   position: relative;
-  padding-right: 70px;
+  &:last-of-type {
+    padding-right: 70px;
+  }
 `
 export const DropdownContainer = styled.ul`
   display: flex;
   opacity: ${({ active }) => (active ? 1 : 0)};
   visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
   flex-direction: column;
-  align-items: center;
-  position: absolute;
+  align-items: left;
+  position: ${({ active }) => (active ? 'relative' : 'absolute')};
   list-style: none;
   background: ${colors.black};
   color: ${colors.white};
   transform: ${({ active }) =>
     active ? 'translateY(0)' : 'translateY(-20px)'};
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s;
   padding: 10px 25px 10px 30px;
 
   @media (min-width: ${breakpoints.lg}) {
+    min-width: 200px;
+    align-items: center;
+    position: absolute;
     padding: 20px;
   }
 
