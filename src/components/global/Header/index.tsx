@@ -18,6 +18,15 @@ import {
   DropdownContainer,
 } from './style'
 
+const DropdownCarotIcon = ({ active = false }) => (
+  <img
+    src={active ? '/images/icon-carot-up.svg' : '/images/icon-carot-down.svg'}
+    alt={active ? 'Close Dropdown' : 'Open Dropdown'}
+    width={20}
+    height={10}
+  />
+)
+
 const Header = ({ currentPage = '' }) => {
   const resourcesDropdownRef = useRef()
   const governanceDropdownRef = useRef()
@@ -98,20 +107,7 @@ const Header = ({ currentPage = '' }) => {
               >
                 Governance
                 <DropdownCarot>
-                  <img
-                    src={
-                      isGovernanceDropdownActive
-                        ? '/images/icon-carot-up.svg'
-                        : '/images/icon-carot-down.svg'
-                    }
-                    alt={
-                      isGovernanceDropdownActive
-                        ? 'Close Dropdown'
-                        : 'Open Dropdown'
-                    }
-                    width={20}
-                    height={10}
-                  />
+                  <DropdownCarotIcon active={isGovernanceDropdownActive} />
                 </DropdownCarot>
               </HeaderNavItem>
               <DropdownContainer
@@ -147,20 +143,7 @@ const Header = ({ currentPage = '' }) => {
               >
                 Resources
                 <DropdownCarot>
-                  <img
-                    src={
-                      isResourcesDropdownActive
-                        ? '/images/icon-carot-up.svg'
-                        : '/images/icon-carot-down.svg'
-                    }
-                    alt={
-                      isResourcesDropdownActive
-                        ? 'Close Dropdown'
-                        : 'Open Dropdown'
-                    }
-                    width={20}
-                    height={10}
-                  />
+                  <DropdownCarotIcon active={isResourcesDropdownActive} />
                 </DropdownCarot>
               </HeaderNavItem>
               <DropdownContainer
