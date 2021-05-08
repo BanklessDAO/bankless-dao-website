@@ -18,16 +18,41 @@ import {
   DropdownContainer,
 } from './style'
 
+const DropdownCarotIcon = ({ active = false }) => (
+  <img
+    src={active ? '/images/icon-carot-up.svg' : '/images/icon-carot-down.svg'}
+    alt={active ? 'Close Dropdown' : 'Open Dropdown'}
+    width={20}
+    height={10}
+  />
+)
+
 const Header = ({ currentPage = '' }) => {
-  const dropdownRef = useRef(null)
-  const [isDropdownActive, setDropdownIsActive] = useDetectOutsideClick(
-    dropdownRef,
-    false
-  )
-  const handleDropdownClick = () => setDropdownIsActive(!isDropdownActive)
+  const resourcesDropdownRef = useRef()
+  const governanceDropdownRef = useRef()
+
+  const [
+    isResourcesDropdownActive,
+    setResourcesDropdownActive,
+  ] = useDetectOutsideClick(resourcesDropdownRef, false)
+  const [
+    isGovernanceDropdownActive,
+    setGovernanceDropdownIsActive,
+  ] = useDetectOutsideClick(governanceDropdownRef, false)
+
+  const handleResourcesDropdownClick = () => {
+    setResourcesDropdownActive(!isResourcesDropdownActive)
+    setGovernanceDropdownIsActive(false)
+  }
+
+  const handleGovernanceDropdownClick = () => {
+    setResourcesDropdownActive(false)
+    setGovernanceDropdownIsActive(!isGovernanceDropdownActive)
+  }
 
   const handleDropdownItemClick = () => {
-    setDropdownIsActive(!isDropdownActive)
+    setGovernanceDropdownIsActive(false)
+    setResourcesDropdownActive(false)
     setMobileNavIsActive(false)
   }
 
@@ -74,18 +99,33 @@ const Header = ({ currentPage = '' }) => {
                 Claim
               </HeaderNavItem>
             </NextLink>
-            <NextLink
-              href="https://snapshot.org/#/banklessvault.eth"
-              passHref={true}
-            >
+            <DropdownNavItem>
               <HeaderNavItem
                 tabIndex="0"
                 active={currentPage.includes('governance')}
-                onClick={() => setMobileNavIsActive(false)}
+                onClick={handleGovernanceDropdownClick}
               >
                 Governance
+                <DropdownCarot>
+                  <DropdownCarotIcon active={isGovernanceDropdownActive} />
+                </DropdownCarot>
               </HeaderNavItem>
-            </NextLink>
+              <DropdownContainer
+                ref={governanceDropdownRef}
+                active={isGovernanceDropdownActive}
+              >
+                <li>
+                  <NextLink href="https://forum.bankless.community/">
+                    <a onClick={handleDropdownItemClick}>Forum</a>
+                  </NextLink>
+                </li>
+                <li>
+                  <NextLink href="https://snapshot.org/#/banklessvault.eth">
+                    <a onClick={handleDropdownItemClick}>Vote</a>
+                  </NextLink>
+                </li>
+              </DropdownContainer>
+            </DropdownNavItem>
             <NextLink href="/mission">
               <HeaderNavItem
                 tabIndex="0"
@@ -99,23 +139,17 @@ const Header = ({ currentPage = '' }) => {
               <HeaderNavItem
                 tabIndex="0"
                 active={currentPage.includes('resources')}
-                onClick={handleDropdownClick}
+                onClick={handleResourcesDropdownClick}
               >
                 Resources
                 <DropdownCarot>
-                  <img
-                    src={
-                      isDropdownActive
-                        ? '/images/icon-carot-up.svg'
-                        : '/images/icon-carot-down.svg'
-                    }
-                    alt={isDropdownActive ? 'Close Dropdown' : 'Open Dropdown'}
-                    width={20}
-                    height={10}
-                  />
+                  <DropdownCarotIcon active={isResourcesDropdownActive} />
                 </DropdownCarot>
               </HeaderNavItem>
-              <DropdownContainer ref={dropdownRef} active={isDropdownActive}>
+              <DropdownContainer
+                ref={resourcesDropdownRef}
+                active={isResourcesDropdownActive}
+              >
                 <li>
                   <NextLink href="https://medium.com/bankless-dao/announcing-bankless-dao-133220f5efd8">
                     <a onClick={handleDropdownItemClick}>Announcement Post</a>
