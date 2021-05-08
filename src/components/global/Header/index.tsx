@@ -19,16 +19,17 @@ import {
 } from './style'
 
 const Header = ({ currentPage = '' }) => {
-  const dropdownRefs = useRef({})
+  const resourcesDropdownRef = useRef()
+  const governanceDropdownRef = useRef()
 
   const [
     isResourcesDropdownActive,
     setResourcesDropdownActive,
-  ] = useDetectOutsideClick(dropdownRefs.current['resources'], false)
+  ] = useDetectOutsideClick(resourcesDropdownRef, false)
   const [
     isGovernanceDropdownActive,
     setGovernanceDropdownIsActive,
-  ] = useDetectOutsideClick(dropdownRefs.current['governance'], false)
+  ] = useDetectOutsideClick(governanceDropdownRef, false)
 
   const handleResourcesDropdownClick = () => {
     setResourcesDropdownActive(!isResourcesDropdownActive)
@@ -114,7 +115,7 @@ const Header = ({ currentPage = '' }) => {
                 </DropdownCarot>
               </HeaderNavItem>
               <DropdownContainer
-                ref={(el) => (dropdownRefs.current['governance'] = el)}
+                ref={governanceDropdownRef}
                 active={isGovernanceDropdownActive}
               >
                 <li>
@@ -163,7 +164,7 @@ const Header = ({ currentPage = '' }) => {
                 </DropdownCarot>
               </HeaderNavItem>
               <DropdownContainer
-                ref={(el) => (dropdownRefs.current['resources'] = el)}
+                ref={resourcesDropdownRef}
                 active={isResourcesDropdownActive}
               >
                 <li>
