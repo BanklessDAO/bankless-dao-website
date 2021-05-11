@@ -7,6 +7,9 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { NetworkConnector } from '@web3-react/network-connector'
 
+export const isProduction = (): boolean =>
+  !!process.env.CONTEXT && process.env.CONTEXT == 'production'
+
 export function isAddress(value: any): string | false {
   try {
     return getAddress(value)
