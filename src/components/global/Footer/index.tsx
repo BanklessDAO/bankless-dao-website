@@ -64,7 +64,7 @@ const Footer = () => {
                 />
               </a>
             </NextLink>
-            <NextLink href="https://github.com/BanklessHQ">
+            <NextLink href="https://github.com/BanklessDAO">
               <a>
                 <img
                   src="/images/icon-social-github.svg"
