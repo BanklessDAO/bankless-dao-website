@@ -167,6 +167,11 @@ const Header = ({ currentPage = '' }) => {
                     </a>
                   </NextLink>
                 </li>
+                <li>
+                  <NextLink href="https://bankless-dao.gitbook.io/bankless-dao/">
+                    <a onClick={handleDropdownItemClick}>Gitbook</a>
+                  </NextLink>
+                </li>
               </DropdownContainer>
             </DropdownNavItem>
           </HeaderNav>
