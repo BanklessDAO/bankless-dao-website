@@ -8,7 +8,7 @@ import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { NetworkConnector } from '@web3-react/network-connector'
 
 export const isProduction = (): boolean =>
-  !!process.env.CONTEXT && process.env.CONTEXT == 'production'
+  !!process.env.NODE_ENV && process.env.NODE_ENV == 'production'
 
 export function isAddress(value: any): string | false {
   try {
