@@ -168,8 +168,8 @@ const Header = ({ currentPage = '' }) => {
                   </NextLink>
                 </li>
                 <li>
-                  <NextLink href="https://bankless-dao.gitbook.io/bankless-dao/">
-                    <a onClick={handleDropdownItemClick}>Gitbook</a>
+                  <NextLink href="https://www.notion.so/BanklessDAO-Wiki-82ba81e7da1c42adb7c4ab67a4f22e8f">
+                    <a onClick={handleDropdownItemClick}>Wiki</a>
                   </NextLink>
                 </li>
               </DropdownContainer>
