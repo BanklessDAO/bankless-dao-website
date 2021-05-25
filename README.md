@@ -12,7 +12,6 @@ Bootstrapped with [NextJS](https://nextjs.org/), [Web3React](https://github.com/
 
 `yarn dev`
 
-
 # Notes
 
 Before committing yarn.lock, verify that the entry for `ethereumjs-abi` reads
