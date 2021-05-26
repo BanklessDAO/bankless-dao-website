@@ -128,12 +128,12 @@ const WalletButton = () => {
       </Button>
       <TokenModal ref={modalRef} active={modalOpen}>
         <TokenModal.TitleRow>
-          <TokenModal.Title>Your BANK Breakdown</TokenModal.Title>
+          <TokenModal.Title>BANK Account</TokenModal.Title>
           <TokenModal.Close
             onClick={() => setModalOpen(!modalOpen)}
             src="/images/icon-close.svg"
-            height="30px"
-            width="30px"
+            height="25px"
+            width="25px"
             alt="close modal"
           />
         </TokenModal.TitleRow>
