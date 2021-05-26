@@ -36,7 +36,10 @@ TokenModal.TitleRow = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  padding: 20px 10px;
+  padding: 20px 0px;
+  @media (min-width: ${breakpoints.lg}) {
+    padding-bottom: 30px;
+  }
 `
 TokenModal.Title = styled.h4`
   ${fontStyles.H3}
@@ -51,6 +54,46 @@ TokenModal.Close = styled.img`
   position: absolute;
   @media (min-width: ${breakpoints.lg}) {
     margin-top: 15px;
+  }
+`
+TokenModal.AddressRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0px;
+  @media (min-width: ${breakpoints.lg}) {
+    padding: 13px 0px;
+  }
+`
+TokenModal.AddressName = styled.div`
+  /*special tiny address font*/
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0px 5px;
+
+  @media (min-width: ${breakpoints.lg}) {
+    padding: 0px;
+    ${fontStyles.H3m}
+    font-weight: bold;
+  }
+`
+TokenModal.Identicon = styled.img`
+  height: 15px;
+  width: 15px;
+  @media (min-width: ${breakpoints.lg}) {
+    height: 32px;
+    width: 32px;
+  }
+`
+TokenModal.ToggleAddress = styled.img`
+  width: 15px;
+  height: 11px;
+  cursor: pointer;
+  @media (min-width: ${breakpoints.lg}) {
+    width: 26px;
+    height: 19px;
   }
 `
 TokenModal.BigRow = styled.div`
