@@ -21,7 +21,7 @@ export const TokenModal = styled.div`
   transform: ${({ active }) =>
     active ? 'translateY(0)' : 'translateY(-20px)'};
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-  padding: 10px 25px 10px 30px;
+  padding: 0px 21px 5px 21px;
   border: 1px solid ${colors.white};
   border-radius: 6px;
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.13);
