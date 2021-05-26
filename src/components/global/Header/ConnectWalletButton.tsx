@@ -9,6 +9,7 @@ import {
   walletConnect,
   injected,
   shortenAddress,
+  obscureAddress,
   trimCurrencyForWhales,
 } from 'src/utils'
 import { useTokenBalance } from 'src/hooks/token/useTokenBalance'
@@ -24,6 +25,7 @@ const WalletButton = () => {
   const walletWeb3ReactContext = useWalletWeb3React()
   const isConnected = walletWeb3ReactContext.active
   const [connectClick, setConnectClick] = useState(false)
+  const [addressHidden, setAddressHidden] = useState(true)
 
   const modalRef = useRef(null)
   const [modalOpen, setModalOpen] = useDetectOutsideClick(modalRef, false)
@@ -129,6 +131,25 @@ const WalletButton = () => {
             alt="close modal"
           />
         </TokenModal.TitleRow>
+        <TokenModal.AddressRow>
+          <TokenModal.Identicon src="/images/identicon.png" alt="identicon" />
+          <TokenModal.AddressName>
+            {isConnected
+              ? addressHidden
+                ? obscureAddress(walletWeb3ReactContext.account)
+                : walletWeb3ReactContext.account
+              : 'Not connected to wallet'}
+          </TokenModal.AddressName>
+          <TokenModal.ToggleAddress
+            onClick={() => setAddressHidden(!addressHidden)}
+            src={
+              addressHidden
+                ? '/images/icon-eye-hide.png'
+                : '/images/icon-eye-show.png'
+            }
+            alt={addressHidden ? 'Show Address' : 'Hide Address'}
+          />
+        </TokenModal.AddressRow>
         <TokenModal.BigRow>
           <img
             src="/images/token-3d.png"
