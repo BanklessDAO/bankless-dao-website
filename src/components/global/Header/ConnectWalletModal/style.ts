@@ -29,20 +29,29 @@ export const TokenModal = styled.div`
   @media (min-width: ${breakpoints.lg}) {
     max-width: 650px;
     max-height: 637px;
+    padding: 10px 57px 10px 57px;
   }
 `
 TokenModal.TitleRow = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  border-bottom: 1px solid ${colors.white};
-  padding: 30px 10px;
+  padding: 20px 10px;
 `
 TokenModal.Title = styled.h4`
   ${fontStyles.H3}
+  width:100%;
+  text-align: center;
+  @media (min-width: ${breakpoints.lg}) {
+    ${fontStyles.H2}
+  }
 `
 TokenModal.Close = styled.img`
   cursor: pointer;
+  position: absolute;
+  @media (min-width: ${breakpoints.lg}) {
+    margin-top: 15px;
+  }
 `
 TokenModal.BigRow = styled.div`
   border-bottom: 1px solid ${colors.white};
