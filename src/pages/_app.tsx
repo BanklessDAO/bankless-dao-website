@@ -12,7 +12,7 @@ function getLibrary(provider) {
 }
 
 const Web3ReactProviderDefault = dynamic(
-  () => import('../components/defaultprovider'),
+  () => import('../providers/Web3ReactProviderDefaultSSR'),
   { ssr: false }
 )
 
