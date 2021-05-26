@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontStyles, gradients } from 'src/theme'
+import { breakpoints, colors, fontStyles, gradients } from 'src/theme'
 
 export const TokenModal = styled.div`
   display: flex;
@@ -13,10 +13,10 @@ export const TokenModal = styled.div`
   left: 0;
   right: 0;
   margin: auto;
-  max-width: 450px;
-  max-height: 520px;
+  max-width: 375px;
+  max-height: 488px;
   list-style: none;
-  background: ${gradients.grayred};
+  background: ${gradients.black};
   color: ${colors.white};
   transform: ${({ active }) =>
     active ? 'translateY(0)' : 'translateY(-20px)'};
@@ -25,6 +25,11 @@ export const TokenModal = styled.div`
   border: 1px solid ${colors.white};
   border-radius: 6px;
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.13);
+
+  @media (min-width: ${breakpoints.lg}) {
+    max-width: 650px;
+    max-height: 637px;
+  }
 `
 TokenModal.TitleRow = styled.div`
   display: flex;
