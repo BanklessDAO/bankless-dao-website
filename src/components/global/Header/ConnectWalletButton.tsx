@@ -123,98 +123,98 @@ const WalletButton = () => {
           ? shortenAddress(walletWeb3ReactContext.account)
           : 'Connect a Wallet'}
       </Button>
-      <TokenModal ref={modalRef} active={modalOpen}>
-        <TokenModal.TitleRow>
-          <TokenModal.Title>BANK Account</TokenModal.Title>
-          <TokenModal.Close
-            onClick={() => setModalOpen(!modalOpen)}
-            src="/images/icon-close.svg"
-            height="25px"
-            width="25px"
-            alt="close modal"
-          />
-        </TokenModal.TitleRow>
-        <TokenModal.AddressRow>
-          <TokenModal.Identicon src="/images/identicon.png" alt="identicon" />
-          <TokenModal.AddressName>
-            {isConnected
-              ? addressHidden
-                ? obscureAddress(walletWeb3ReactContext.account)
-                : walletWeb3ReactContext.account
-              : 'Not connected to wallet'}
-          </TokenModal.AddressName>
-          <TokenModal.ToggleAddress
-            onClick={() => setAddressHidden(!addressHidden)}
-            src={
-              addressHidden
-                ? '/images/icon-eye-hide.png'
-                : '/images/icon-eye-show.png'
-            }
-            alt={addressHidden ? 'Show Address' : 'Hide Address'}
-          />
-        </TokenModal.AddressRow>
-        <TokenModal.WalletActionsRow>
-          <TokenModal.WalletAction
-            onClick={() => {
-              navigator.clipboard.writeText(walletWeb3ReactContext.account)
-              setCopiedAddress(true)
-              setTimeout(() => setCopiedAddress(false), 2000)
-            }}
-          >
-            <img
-              src="/images/icon-copy.svg"
-              height="15px"
-              width="16px"
-              alt="Copy Address"
+      {isConnected && (
+        <TokenModal ref={modalRef} active={modalOpen}>
+          <TokenModal.TitleRow>
+            <TokenModal.Title>BANK Account</TokenModal.Title>
+            <TokenModal.Close
+              onClick={() => setModalOpen(!modalOpen)}
+              src="/images/icon-close.svg"
+              height="25px"
+              width="25px"
+              alt="close modal"
             />
-            {copiedAddress ? `Copied!` : `Copy Address`}
-          </TokenModal.WalletAction>
-          <NextLink
-            href={`https://etherscan.io/address/${walletWeb3ReactContext.account}`}
-          >
-            <TokenModal.WalletAction>
+          </TokenModal.TitleRow>
+          <TokenModal.AddressRow>
+            <TokenModal.Identicon src="/images/identicon.png" alt="identicon" />
+            <TokenModal.AddressName>
+              {addressHidden
+                ? obscureAddress(walletWeb3ReactContext.account)
+                : walletWeb3ReactContext.account}
+            </TokenModal.AddressName>
+            <TokenModal.ToggleAddress
+              onClick={() => setAddressHidden(!addressHidden)}
+              src={
+                addressHidden
+                  ? '/images/icon-eye-hide.png'
+                  : '/images/icon-eye-show.png'
+              }
+              alt={addressHidden ? 'Show Address' : 'Hide Address'}
+            />
+          </TokenModal.AddressRow>
+          <TokenModal.WalletActionsRow>
+            <TokenModal.WalletAction
+              onClick={() => {
+                navigator.clipboard.writeText(walletWeb3ReactContext.account)
+                setCopiedAddress(true)
+                setTimeout(() => setCopiedAddress(false), 2000)
+              }}
+            >
               <img
-                src="/images/icon-export.svg"
+                src="/images/icon-copy.svg"
+                height="15px"
+                width="16px"
+                alt="Copy Address"
+              />
+              {copiedAddress ? `Copied!` : `Copy Address`}
+            </TokenModal.WalletAction>
+            <NextLink
+              href={`https://etherscan.io/address/${walletWeb3ReactContext.account}`}
+            >
+              <TokenModal.WalletAction>
+                <img
+                  src="/images/icon-export.svg"
+                  height="15px"
+                  width="15px"
+                  alt="Etherscan"
+                />
+                Etherscan
+              </TokenModal.WalletAction>
+            </NextLink>
+            <TokenModal.WalletAction onClick={() => setConnectClick(true)}>
+              <img
+                src="/images/icon-wallet.svg"
                 height="15px"
                 width="15px"
-                alt="Etherscan"
+                alt="Change Wallet"
               />
-              Etherscan
+              Change Wallet
             </TokenModal.WalletAction>
-          </NextLink>
-          <TokenModal.WalletAction onClick={() => setConnectClick(true)}>
+          </TokenModal.WalletActionsRow>
+          <TokenModal.BigRow>
             <img
-              src="/images/icon-wallet.svg"
-              height="15px"
-              width="15px"
-              alt="Change Wallet"
+              src="/images/token-3d.png"
+              height="90px"
+              width="90px"
+              alt="3d token icon"
             />
-            Change Wallet
-          </TokenModal.WalletAction>
-        </TokenModal.WalletActionsRow>
-        <TokenModal.BigRow>
-          <img
-            src="/images/token-3d.png"
-            height="90px"
-            width="90px"
-            alt="3d token icon"
-          />
-          <strong>{whaleBalance}</strong>
-        </TokenModal.BigRow>
-        <TokenModal.BalanceRow>
-          <TokenModal.StatLine>
-            Balance: <span>{commaBalance} BANK</span>
-          </TokenModal.StatLine>
-          <TokenModal.StatLine>
-            Unclaimed: <span>{commaClaim} BANK</span>
-          </TokenModal.StatLine>
-        </TokenModal.BalanceRow>
-        <TokenModal.SupplyRow>
-          <TokenModal.StatLine>
-            Total supply: <span>{commaSupply} BANK</span>
-          </TokenModal.StatLine>
-        </TokenModal.SupplyRow>
-      </TokenModal>
+            <strong>{whaleBalance}</strong>
+          </TokenModal.BigRow>
+          <TokenModal.BalanceRow>
+            <TokenModal.StatLine>
+              Balance: <span>{commaBalance} BANK</span>
+            </TokenModal.StatLine>
+            <TokenModal.StatLine>
+              Unclaimed: <span>{commaClaim} BANK</span>
+            </TokenModal.StatLine>
+          </TokenModal.BalanceRow>
+          <TokenModal.SupplyRow>
+            <TokenModal.StatLine>
+              Total supply: <span>{commaSupply} BANK</span>
+            </TokenModal.StatLine>
+          </TokenModal.SupplyRow>
+        </TokenModal>
+      )}
     </React.Fragment>
   )
 }
