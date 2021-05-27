@@ -58,19 +58,18 @@ TokenModal.Close = styled.img`
 `
 TokenModal.AddressRow = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   padding: 0px;
   @media (min-width: ${breakpoints.lg}) {
+    justify-content: space-between;
     padding: 13px 0px;
   }
 `
 TokenModal.AddressName = styled.div`
-  /*special tiny address font*/
+  ${fontStyles.Small}
   font-weight: bold;
-  font-size: 12px;
-  line-height: 16px;
   padding: 0px 5px;
 
   @media (min-width: ${breakpoints.lg}) {
@@ -94,6 +93,32 @@ TokenModal.ToggleAddress = styled.img`
   @media (min-width: ${breakpoints.lg}) {
     width: 26px;
     height: 19px;
+  }
+`
+TokenModal.WalletActionsRow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0px;
+`
+TokenModal.WalletAction = styled.div`
+  ${fontStyles.Small}
+  align-items: top;
+  padding: 25px 9px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    vertical-align: middle;
+    margin-right: 9px;
+  }
+  &:active {
+    opacity: 0.8;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    padding: 10px 12px;
   }
 `
 TokenModal.BigRow = styled.div`

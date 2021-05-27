@@ -1,6 +1,7 @@
 import Web3Modal from 'web3modal'
 import React, { useState, useEffect, useRef } from 'react'
 import WalletConnectProvider from '@walletconnect/web3-provider'
+import NextLink from 'next/link'
 
 import Button from 'src/components/parts/Button'
 import { useWalletWeb3React } from 'src/hooks'
@@ -26,12 +27,14 @@ const WalletButton = () => {
   const isConnected = walletWeb3ReactContext.active
   const [connectClick, setConnectClick] = useState(false)
   const [addressHidden, setAddressHidden] = useState(true)
+  const [copiedAddress, setCopiedAddress] = useState(false)
 
   const modalRef = useRef(null)
   const [modalOpen, setModalOpen] = useDetectOutsideClick(modalRef, false)
 
   useEffect(() => {
     if (connectClick) {
+      setModalOpen(false)
       if (!web3Modal) {
         web3Modal = new Web3Modal({
           network: 'mainnet',
@@ -150,6 +153,45 @@ const WalletButton = () => {
             alt={addressHidden ? 'Show Address' : 'Hide Address'}
           />
         </TokenModal.AddressRow>
+        <TokenModal.WalletActionsRow>
+          <TokenModal.WalletAction
+            onClick={() => {
+              navigator.clipboard.writeText(walletWeb3ReactContext.account)
+              setCopiedAddress(true)
+              setTimeout(() => setCopiedAddress(false), 2000)
+            }}
+          >
+            <img
+              src="/images/icon-copy.svg"
+              height="15px"
+              width="16px"
+              alt="Copy Address"
+            />
+            {copiedAddress ? `Copied!` : `Copy Address`}
+          </TokenModal.WalletAction>
+          <NextLink
+            href={`https://etherscan.io/address/${walletWeb3ReactContext.account}`}
+          >
+            <TokenModal.WalletAction>
+              <img
+                src="/images/icon-export.svg"
+                height="15px"
+                width="15px"
+                alt="Etherscan"
+              />
+              Etherscan
+            </TokenModal.WalletAction>
+          </NextLink>
+          <TokenModal.WalletAction onClick={() => setConnectClick(true)}>
+            <img
+              src="/images/icon-wallet.svg"
+              height="15px"
+              width="15px"
+              alt="Change Wallet"
+            />
+            Change Wallet
+          </TokenModal.WalletAction>
+        </TokenModal.WalletActionsRow>
         <TokenModal.BigRow>
           <img
             src="/images/token-3d.png"
