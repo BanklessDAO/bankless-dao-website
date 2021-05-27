@@ -16,7 +16,6 @@ import {
 } from 'src/utils'
 import { useTokenBalance } from 'src/hooks/token/useTokenBalance'
 import { useUserClaimData } from 'src/hooks/useClaim'
-import { useTokenSupply } from 'src/hooks/token/useTokenSupply'
 
 import { TokenModal } from './ConnectWalletModal/style'
 import { INFURA_ID } from 'src/constants'
@@ -31,6 +30,8 @@ const WalletButton = () => {
   const [connectClick, setConnectClick] = useState(false)
   const [addressHidden, setAddressHidden] = useState(true)
   const [copiedAddress, setCopiedAddress] = useState(false)
+  const [tokenEffect, setTokenEffect] = useState(false)
+  const [unclaimedTokens, setUnclaimedTokens] = useState(false)
 
   const modalRef = useRef(null)
   const [modalOpen, setModalOpen] = useDetectOutsideClick(modalRef, false)
@@ -86,17 +87,10 @@ const WalletButton = () => {
   const whaleBalance = trimCurrencyForWhales(rawBalance)
 
   const claimData = useUserClaimData(walletWeb3ReactContext.account ?? '')
-  let total = 0
   claimData.forEach((individualClaimData) => {
     if (individualClaimData && !(individualClaimData as any).claimed)
-      total += Number(individualClaimData.amount)
+      setUnclaimedTokens(true)
   })
-  const commaClaim = claimData
-    ? Number(Number(total) / 10 ** 18).toLocaleString('en')
-    : 0
-
-  const rawSupply = useTokenSupply()
-  const commaSupply = Number(rawSupply).toLocaleString('en')
 
   return (
     <React.Fragment>
@@ -200,27 +194,48 @@ const WalletButton = () => {
             </TokenModal.WalletAction>
           </TokenModal.WalletActionsRow>
           <TokenModal.BigRow>
-            <img
-              src="/images/token-3d.png"
-              height="90px"
-              width="90px"
-              alt="3d token icon"
-            />
-            <strong>{whaleBalance}</strong>
+            <div>Bankless DAO / $BANK</div>
+            <TokenModal.BigBank>
+              <strong>{whaleBalance}</strong>
+              <img
+                onMouseEnter={() => {
+                  setTokenEffect(true)
+                }}
+                onMouseLeave={() => {
+                  setTokenEffect(false)
+                }}
+                src={
+                  tokenEffect
+                    ? '/images/token-3d-animated.gif'
+                    : '/images/token-3d.png'
+                }
+                height="85px"
+                width="85px"
+                alt="3d token icon"
+              />
+            </TokenModal.BigBank>
+            <TokenModal.BankBalance>
+              {commaBalance} <strong>BANK</strong>
+            </TokenModal.BankBalance>
+            {unclaimedTokens ? (
+              <TokenModal.UnclaimedNotice>
+                <img
+                  src="/images/icon-warning.svg"
+                  height="15px"
+                  width="15px"
+                  alt="warning"
+                />
+                <span>Unclaimed Tokens Now Available</span>
+                <img
+                  src="/images/icon-warning.svg"
+                  height="15px"
+                  width="15px"
+                  alt="warning"
+                />
+              </TokenModal.UnclaimedNotice>
+            ) : null}
           </TokenModal.BigRow>
-          <TokenModal.BalanceRow>
-            <TokenModal.StatLine>
-              Balance: <span>{commaBalance} BANK</span>
-            </TokenModal.StatLine>
-            <TokenModal.StatLine>
-              Unclaimed: <span>{commaClaim} BANK</span>
-            </TokenModal.StatLine>
-          </TokenModal.BalanceRow>
-          <TokenModal.SupplyRow>
-            <TokenModal.StatLine>
-              Total supply: <span>{commaSupply} BANK</span>
-            </TokenModal.StatLine>
-          </TokenModal.SupplyRow>
+          <TokenModal.BottomRow>Add BANK to MetaMask</TokenModal.BottomRow>
         </TokenModal>
       )}
     </React.Fragment>

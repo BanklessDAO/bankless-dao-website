@@ -14,7 +14,7 @@ export const TokenModal = styled.div`
   right: 0;
   margin: auto;
   max-width: 375px;
-  max-height: 488px;
+  max-height: 435px;
   list-style: none;
   background: ${gradients.black};
   color: ${colors.white};
@@ -28,7 +28,7 @@ export const TokenModal = styled.div`
 
   @media (min-width: ${breakpoints.lg}) {
     max-width: 650px;
-    max-height: 637px;
+    max-height: 570px;
     padding: 10px 57px 10px 57px;
   }
 `
@@ -100,7 +100,10 @@ TokenModal.WalletActionsRow = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0px;
+  padding-bottom: 0px;
+  @media (min-width: ${breakpoints.lg}) {
+    padding-bottom: 40px;
+  }
 `
 TokenModal.WalletAction = styled.div`
   ${fontStyles.Small}
@@ -114,40 +117,78 @@ TokenModal.WalletAction = styled.div`
     vertical-align: middle;
     margin-right: 9px;
   }
-  &:active {
-    opacity: 0.8;
+  &:hover {
+    text-decoration: underline;
   }
   @media (min-width: ${breakpoints.lg}) {
     padding: 10px 12px;
   }
 `
 TokenModal.BigRow = styled.div`
-  border-bottom: 1px solid ${colors.white};
+  border: 1px solid ${colors.white};
+  border-radius: 6px;
   width: 100%;
-  padding-top: 30px;
-  padding-bottom: 40px;
+  padding-top: 18px;
+  /* padding-bottom: 40px; */
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+TokenModal.BigBank = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
   img {
-    margin-bottom: 20px;
+    margin-top: 10px;
   }
   strong {
-    ${fontStyles.H2}
+    ${fontStyles.H1}
+    @media (min-width: ${breakpoints.lg}) {
+      padding-right: 20px;
+    }
   }
 `
-TokenModal.BalanceRow = styled.div`
-  border-bottom: 1px solid ${colors.white};
-  width: 100%;
-  margin-bottom: 15px;
+TokenModal.BankBalance = styled.div`
+  text-align: center;
+  padding: 5px 5px 0px 5px;
+  margin-bottom: 20px;
 `
-TokenModal.SupplyRow = styled.div`
-  width: 100%;
-`
-TokenModal.StatLine = styled.div`
+TokenModal.UnclaimedNotice = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 0px;
+  background: ${colors.white};
+  color: ${colors.black};
   width: 100%;
-  padding: 0 10px 15px;
+  padding: 4px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  img {
+    margin: 0px 3px;
+  }
+  span {
+    padding: 9px;
+    ${fontStyles.Small}
+    @media (min-width: ${breakpoints.lg}) {
+      padding: 0px;
+      ${fontStyles.P}
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    margin-top: 10px;
+  }
+`
+TokenModal.BottomRow = styled.div`
+  ${fontStyles.Small}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  @media (min-width: ${breakpoints.lg}) {
+    ${fontStyles.P}
+    padding: 20px;
+  }
 `
