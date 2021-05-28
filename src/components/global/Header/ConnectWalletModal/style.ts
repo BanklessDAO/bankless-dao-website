@@ -147,7 +147,6 @@ TokenModal.BigRow = styled.div`
   border-radius: 6px;
   width: 100%;
   padding-top: 18px;
-  /* padding-bottom: 40px; */
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
