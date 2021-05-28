@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
+import Jazzicon from 'react-jazzicon'
 
 import Button from 'src/components/parts/Button'
 import ENSName from 'src/components/parts/ENSName'
@@ -160,7 +161,9 @@ const WalletButton = () => {
             />
           </TokenModal.TitleRow>
           <TokenModal.AddressRow>
-            <TokenModal.Identicon src="/images/identicon.png" alt="identicon" />
+            <TokenModal.WalletIcon>
+              <Jazzicon diameter={25} seed={walletWeb3ReactContext.account} />
+            </TokenModal.WalletIcon>
             <TokenModal.AddressName>
               {addressHidden
                 ? obscureAddress(walletWeb3ReactContext.account)
