@@ -78,12 +78,30 @@ TokenModal.AddressName = styled.div`
     font-weight: bold;
   }
 `
-TokenModal.Identicon = styled.img`
-  height: 15px;
+TokenModal.WalletIcon = styled.div`
   width: 15px;
+  height: 25px;
+  .paper {
+    height: 15px !important;
+    width: 15px !important;
+  }
+  .paper svg * {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
   @media (min-width: ${breakpoints.lg}) {
-    height: 32px;
-    width: 32px;
+    width: 25px;
+    height: 25px;
+    .paper {
+      height: 25px !important;
+      width: 25px !important;
+    }
+    .paper svg * {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
   }
 `
 TokenModal.ToggleAddress = styled.img`
