@@ -207,9 +207,7 @@ const WalletButton = () => {
               </TokenModal.WalletAction>
             </NextLink>
             <TokenModal.WalletAction
-              onClick={() => {
-                setConnectClick(true)
-              }}
+              onClick={() => walletWeb3ReactContext.deactivate()}
             >
               <img
                 src="/images/icon-wallet.svg"
