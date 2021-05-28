@@ -2,6 +2,7 @@ import Web3Modal from 'web3modal'
 import React, { useState, useEffect, useRef } from 'react'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 import Button from 'src/components/parts/Button'
 import ENSName from 'src/components/parts/ENSName'
@@ -33,6 +34,7 @@ const WalletButton = () => {
   const [tokenEffect, setTokenEffect] = useState(false)
   const [unclaimedTokens, setUnclaimedTokens] = useState(false)
 
+  const router = useRouter()
   const modalRef = useRef(null)
   const [modalOpen, setModalOpen] = useDetectOutsideClick(modalRef, false)
 
@@ -238,7 +240,12 @@ const WalletButton = () => {
               {commaBalance} <strong>BANK</strong>
             </TokenModal.BankBalance>
             {unclaimedTokens ? (
-              <TokenModal.UnclaimedNotice>
+              <TokenModal.UnclaimedNotice
+                onClick={() => {
+                  setModalOpen(false)
+                  router.push('/claim')
+                }}
+              >
                 <img
                   src="/images/icon-warning.svg"
                   height="15px"
@@ -255,7 +262,10 @@ const WalletButton = () => {
               </TokenModal.UnclaimedNotice>
             ) : null}
           </TokenModal.BigRow>
-          <TokenModal.ToolItem onClick={() => addToMetaMask()}>
+          <TokenModal.ToolItem
+            extraPad={rawClaim ? false : true}
+            onClick={() => addToMetaMask()}
+          >
             Add BANK to MetaMask
           </TokenModal.ToolItem>
         </TokenModal>
