@@ -100,7 +100,7 @@ const WalletButton = () => {
               address: TOKEN_ADDRESS[1],
               decimals: 18,
               symbol: 'BANK',
-              image: 'https://www.bankless.community/logo.svg',
+              image: 'https://www.bankless.community/images/token-metamask.png',
             },
           },
         })
