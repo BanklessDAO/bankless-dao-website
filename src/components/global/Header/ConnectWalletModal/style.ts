@@ -14,7 +14,7 @@ export const TokenModal = styled.div`
   right: 0;
   margin: auto;
   max-width: 375px;
-  max-height: 435px;
+  max-height: 465px;
   list-style: none;
   background: ${gradients.black};
   color: ${colors.white};
@@ -28,7 +28,7 @@ export const TokenModal = styled.div`
 
   @media (min-width: ${breakpoints.lg}) {
     max-width: 650px;
-    max-height: 570px;
+    max-height: 600px;
     padding: 10px 57px 10px 57px;
   }
 `
@@ -163,6 +163,7 @@ TokenModal.UnclaimedNotice = styled.div`
   background: ${colors.white};
   color: ${colors.black};
   width: 100%;
+  cursor: pointer;
   padding: 4px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -187,10 +188,10 @@ TokenModal.ToolItem = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 10px;
+  padding: ${(props) => (props.extraPad === true ? '25px' : '5px')};
   @media (min-width: ${breakpoints.lg}) {
     ${fontStyles.P}
-    padding: 20px;
+    padding: ${(props) => (props.extraPad === true ? '30px' : '10px')};
   }
   &:hover {
     text-decoration: underline;
