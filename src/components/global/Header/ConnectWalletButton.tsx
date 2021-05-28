@@ -45,7 +45,7 @@ const WalletButton = () => {
       if (!web3Modal) {
         web3Modal = new Web3Modal({
           network: 'mainnet',
-          cacheProvider: false,
+          cacheProvider: true,
           providerOptions: {
             walletconnect: {
               package: WalletConnectProvider,
@@ -64,6 +64,8 @@ const WalletButton = () => {
             },
           },
         })
+      } else {
+        web3Modal.clearCachedProvider()
       }
       web3Modal
         .connect()
@@ -86,23 +88,24 @@ const WalletButton = () => {
   }, [connectClick])
 
   function addToMetaMask() {
-    const provider = walletWeb3ReactContext.library.provider
-    if (!provider.isMetaMask) {
-      alert('Please install MetaMask and try again!')
-    } else {
-      provider.request({
-        method: 'wallet_watchAsset',
-        params: {
-          type: 'ERC20',
-          options: {
-            address: TOKEN_ADDRESS[1],
-            decimals: 18,
-            symbol: 'BANK',
-            image: 'https://www.bankless.community/logo.svg',
+    web3Modal.connect().then((provider) => {
+      if (!provider.isMetaMask) {
+        alert('Please install MetaMask and try again!')
+      } else {
+        provider.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: TOKEN_ADDRESS[1],
+              decimals: 18,
+              symbol: 'BANK',
+              image: 'https://www.bankless.community/logo.svg',
+            },
           },
-        },
-      })
-    }
+        })
+      }
+    })
   }
 
   const rawBalance = useTokenBalance(walletWeb3ReactContext.account) ?? 0
