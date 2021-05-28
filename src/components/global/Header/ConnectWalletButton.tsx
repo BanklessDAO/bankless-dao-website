@@ -18,7 +18,7 @@ import { useTokenBalance } from 'src/hooks/token/useTokenBalance'
 import { useUserClaimData } from 'src/hooks/useClaim'
 
 import { TokenModal } from './ConnectWalletModal/style'
-import { INFURA_ID } from 'src/constants'
+import { INFURA_ID, TOKEN_ADDRESS } from 'src/constants'
 
 let web3Modal: Web3Modal
 
@@ -81,6 +81,26 @@ const WalletButton = () => {
         })
     }
   }, [connectClick])
+
+  function addToMetaMask() {
+    const provider = walletWeb3ReactContext.library.provider
+    if (!provider.isMetaMask) {
+      alert('Please install MetaMask and try again!')
+    } else {
+      provider.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: TOKEN_ADDRESS[1],
+            decimals: 18,
+            symbol: 'BANK',
+            image: 'https://www.bankless.community/logo.svg',
+          },
+        },
+      })
+    }
+  }
 
   const rawBalance = useTokenBalance(walletWeb3ReactContext.account) ?? 0
   const commaBalance = Number(rawBalance).toLocaleString('en')
@@ -235,7 +255,9 @@ const WalletButton = () => {
               </TokenModal.UnclaimedNotice>
             ) : null}
           </TokenModal.BigRow>
-          <TokenModal.BottomRow>Add BANK to MetaMask</TokenModal.BottomRow>
+          <TokenModal.ToolItem onClick={() => addToMetaMask()}>
+            Add BANK to MetaMask
+          </TokenModal.ToolItem>
         </TokenModal>
       )}
     </React.Fragment>
