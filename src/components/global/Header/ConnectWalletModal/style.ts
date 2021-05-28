@@ -181,14 +181,18 @@ TokenModal.UnclaimedNotice = styled.div`
     margin-top: 10px;
   }
 `
-TokenModal.BottomRow = styled.div`
+TokenModal.ToolItem = styled.div`
   ${fontStyles.Small}
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   padding: 10px;
   @media (min-width: ${breakpoints.lg}) {
     ${fontStyles.P}
     padding: 20px;
+  }
+  &:hover {
+    text-decoration: underline;
   }
 `
