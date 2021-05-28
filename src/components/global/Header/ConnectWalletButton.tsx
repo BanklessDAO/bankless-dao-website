@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import Jazzicon from 'react-jazzicon'
+import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 
 import Button from 'src/components/parts/Button'
 import { useWalletWeb3React } from 'src/hooks'
@@ -157,7 +157,10 @@ const WalletButton = () => {
           </TokenModal.TitleRow>
           <TokenModal.AddressRow>
             <TokenModal.WalletIcon>
-              <Jazzicon diameter={25} seed={walletWeb3ReactContext.account} />
+              <Jazzicon
+                diameter={25}
+                seed={jsNumberForAddress(walletWeb3ReactContext.account)}
+              />
             </TokenModal.WalletIcon>
             <TokenModal.AddressName>
               {addressHidden
@@ -203,7 +206,11 @@ const WalletButton = () => {
                 Etherscan
               </TokenModal.WalletAction>
             </NextLink>
-            <TokenModal.WalletAction onClick={() => setConnectClick(true)}>
+            <TokenModal.WalletAction
+              onClick={() => {
+                setConnectClick(true)
+              }}
+            >
               <img
                 src="/images/icon-wallet.svg"
                 height="15px"
