@@ -32,8 +32,7 @@ const WalletButton = () => {
   const [connectClick, setConnectClick] = useState(false)
   const [addressHidden, setAddressHidden] = useState(true)
   const [copiedAddress, setCopiedAddress] = useState(false)
-  const [tokenEffect, setTokenEffect] = useState(false)
-  const [unclaimedTokens, setUnclaimedTokens] = useState(false)
+  const [animateToken, setAnimateToken] = useState(false)
 
   const router = useRouter()
   const modalRef = useRef(null)
@@ -152,7 +151,11 @@ const WalletButton = () => {
           : 'Connect a Wallet'}
       </Button>
       {isConnected && (
-        <TokenModal ref={modalRef} active={modalOpen}>
+        <TokenModal
+          ref={modalRef}
+          active={modalOpen}
+          claimNotice={rawClaim ? true : false}
+        >
           <TokenModal.TitleRow>
             <TokenModal.Title>BANK Account</TokenModal.Title>
             <TokenModal.Close
@@ -209,7 +212,7 @@ const WalletButton = () => {
                   src="/images/icon-export.svg"
                   height="15px"
                   width="15px"
-                  alt="Etherscan"
+                  alt="Open in Etherscan"
                 />
                 Etherscan
               </TokenModal.WalletAction>
@@ -227,18 +230,18 @@ const WalletButton = () => {
             </TokenModal.WalletAction>
           </TokenModal.WalletActionsRow>
           <TokenModal.BigRow>
-            <div>Bankless DAO / $BANK</div>
+            <TokenModal.BankTitle>Bankless DAO / $BANK</TokenModal.BankTitle>
             <TokenModal.BigBank>
               <strong>{whaleBalance}</strong>
               <img
                 onMouseEnter={() => {
-                  setTokenEffect(true)
+                  setAnimateToken(true)
                 }}
                 onMouseLeave={() => {
-                  setTokenEffect(false)
+                  setAnimateToken(false)
                 }}
                 src={
-                  tokenEffect
+                  animateToken
                     ? '/images/token-3d-animated.gif'
                     : '/images/token-3d.png'
                 }
@@ -273,12 +276,11 @@ const WalletButton = () => {
               </TokenModal.UnclaimedNotice>
             ) : null}
           </TokenModal.BigRow>
-          <TokenModal.ToolItem
-            extraPad={rawClaim ? false : true}
-            onClick={() => addToMetaMask()}
-          >
-            Add BANK to MetaMask
-          </TokenModal.ToolItem>
+          <TokenModal.ToolRow>
+            <TokenModal.ToolItem onClick={() => addToMetaMask()}>
+              Add BANK to MetaMask
+            </TokenModal.ToolItem>
+          </TokenModal.ToolRow>
         </TokenModal>
       )}
     </React.Fragment>

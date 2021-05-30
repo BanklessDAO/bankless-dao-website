@@ -14,22 +14,27 @@ export const TokenModal = styled.div`
   right: 0;
   margin: auto;
   max-width: 375px;
-  max-height: 465px;
+  max-height: ${(props) => (props.claimNotice === true ? '465px' : '436px')};
+
   list-style: none;
   background: ${gradients.black};
   color: ${colors.white};
   transform: ${({ active }) =>
     active ? 'translateY(0)' : 'translateY(-20px)'};
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-  padding: 0px 21px 5px 21px;
+  padding: 0px 21px 0px 21px;
   border: 1px solid ${colors.white};
   border-radius: 6px;
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.13);
 
+  // Ref: TokenModal.BankBalance { paddingBottom: var(--claimNotice) }
+  --claimNotice: ${(props) => (props.claimNotice === true ? '20px' : '25px')};
+
   @media (min-width: ${breakpoints.lg}) {
+    padding: 10px 57px 0px 57px;
     max-width: 650px;
     max-height: 600px;
-    padding: 10px 57px 10px 57px;
+    --claimNotice: ${(props) => (props.claimNotice === true ? '18px' : '25px')};
   }
 `
 TokenModal.TitleRow = styled.div`
@@ -146,22 +151,30 @@ TokenModal.BigRow = styled.div`
   border: 1px solid ${colors.white};
   border-radius: 6px;
   width: 100%;
-  padding-top: 18px;
-  margin-bottom: 15px;
+  padding-top: 19px;
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+TokenModal.BankTitle = styled.h3`
+  ${fontStyles.H3}
+  font-weight: normal;
 `
 TokenModal.BigBank = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
+  padding-top: 5px;
+  @media (min-width: ${breakpoints.lg}) {
+    padding-top: 15px;
+  }
   img {
     margin-top: 10px;
   }
   strong {
     ${fontStyles.H1}
+    padding-right: 8px;
     @media (min-width: ${breakpoints.lg}) {
       padding-right: 20px;
     }
@@ -169,8 +182,7 @@ TokenModal.BigBank = styled.div`
 `
 TokenModal.BankBalance = styled.div`
   text-align: center;
-  padding: 5px 5px 0px 5px;
-  margin-bottom: 20px;
+  padding-bottom: var(--claimNotice);
 `
 TokenModal.UnclaimedNotice = styled.div`
   display: flex;
@@ -181,34 +193,36 @@ TokenModal.UnclaimedNotice = styled.div`
   color: ${colors.black};
   width: 100%;
   cursor: pointer;
-  padding: 4px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  img {
-    margin: 0px 3px;
-  }
-  span {
-    padding: 9px;
-    ${fontStyles.Small}
-    @media (min-width: ${breakpoints.lg}) {
-      padding: 0px;
-      ${fontStyles.P}
-    }
-  }
+  padding: 12px 3px 11px 3px;
   @media (min-width: ${breakpoints.lg}) {
     margin-top: 10px;
+    padding: 5px 3px 3px 3px;
+  }
+  img {
+    margin: 0px 5px;
+  }
+  span {
+    ${fontStyles.Small}
+    @media (min-width: ${breakpoints.lg}) {
+      ${fontStyles.H3}
+      font-weight: normal;
+    }
   }
 `
-TokenModal.ToolItem = styled.div`
-  ${fontStyles.Small}
+TokenModal.ToolRow = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+`
+TokenModal.ToolItem = styled.div`
+  ${fontStyles.Small}
+  text-align: center;
   cursor: pointer;
-  padding: ${(props) => (props.extraPad === true ? '25px' : '5px')};
   @media (min-width: ${breakpoints.lg}) {
     ${fontStyles.P}
-    padding: ${(props) => (props.extraPad === true ? '30px' : '10px')};
   }
   &:hover {
     text-decoration: underline;
