@@ -2,7 +2,7 @@
 // import { TransactionResponse } from '@ethersproject/providers'
 import { useEffect, useState } from 'react'
 import { useActiveWeb3React, useDefaultWeb3React } from '.'
-import { useMerkleDistributorContract } from './useMerkleDistributorContract'
+import { useMerkleDistributorContracts } from './useMerkleDistributorContracts'
 import { isAddress } from '../utils'
 
 interface UserClaimData {
@@ -17,7 +17,7 @@ const CLAIM_PROMISES: { [key: string]: Promise<UserClaimData | null> } = {}
 function fetchClaim(
   account: string,
   chainId: number
-): Promise<UserClaimData | null> {
+): Promise<Array<UserClaimData | null>> {
   const formatted = isAddress(account)
   if (!formatted) return Promise.resolve(undefined)
   const key = `${chainId}:${account}`
@@ -35,10 +35,13 @@ function fetchClaim(
       .then(async (res) => {
         if (res.ok) {
           const claimData = await res.json()
-          claimData.account = account
+          claimData.forEach((individualClaim) => {
+            if (individualClaim !== null && individualClaim != undefined)
+              individualClaim.account = account
+          })
           return claimData
         } else {
-          return undefined
+          return [undefined, undefined]
         }
       })
       .catch((error) => console.error('Failed to get claim data', error)))
@@ -48,11 +51,47 @@ function fetchClaim(
 // null means we know it does not
 export function useUserClaimData(
   rawAccount: string
-): UserClaimData | null | undefined {
+): Array<UserClaimData | null | undefined> {
   const { chainId } = useActiveWeb3React()
-  const ensLibrary = useDefaultWeb3React().library
-  const distributorContract = useMerkleDistributorContract()
+  const distributorContracts = useMerkleDistributorContracts()
 
+  const account = useAccount(rawAccount)
+
+  const key = `${chainId}:${account}`
+
+  const [claimInfo, setClaimInfo] = useState<{
+    [key: string]: Array<UserClaimData | null>
+  }>({})
+  useEffect(() => {
+    if (!account || !chainId) return
+    fetchClaim(account, chainId).then((accountClaimInfo) =>
+      setClaimInfo((claimInfo) => {
+        return {
+          ...claimInfo,
+          [key]: accountClaimInfo,
+        }
+      })
+    )
+  }, [account, chainId, key])
+
+  const claimed = useIsClaimed(claimInfo, key, distributorContracts)
+
+  const [finalClaims, setFinalClaims] = useState([])
+  useEffect(() => {
+    setFinalClaims(
+      claimInfo[key]
+        ? claimInfo[key].map((info, index) => {
+            return !claimed[index] && info ? info : undefined
+          })
+        : []
+    )
+  }, [account, JSON.stringify(claimed), JSON.stringify(claimInfo)])
+
+  return finalClaims
+}
+
+function useAccount(rawAccount): string {
+  const ensLibrary = useDefaultWeb3React().library
   const [account, setAccount] = useState('')
   useEffect(() => {
     if (rawAccount.endsWith('.eth')) {
@@ -69,77 +108,140 @@ export function useUserClaimData(
     }
   }, [rawAccount])
 
-  const key = `${chainId}:${account}`
-  const [claimInfo, setClaimInfo] = useState<{
-    [key: string]: UserClaimData | null
-  }>({})
-  const claimed = useIsClaimed(claimInfo[key], distributorContract)
-
-  useEffect(() => {
-    if (!account || !chainId) return
-    fetchClaim(account, chainId).then((accountClaimInfo) =>
-      setClaimInfo((claimInfo) => {
-        return {
-          ...claimInfo,
-          [key]: accountClaimInfo,
-        }
-      })
-    )
-  }, [claimed, account, chainId, key])
-
-  return !claimed && claimInfo[key] ? claimInfo[key] : undefined
+  return account
 }
 
-export function useIsClaimed(claimInfo, distributorContract): boolean {
-  const [claimed, setClaimed] = useState(true)
+export function useIsClaimed(
+  claimInfo,
+  key,
+  distributorContracts
+): Array<boolean> {
+  const [claimed, setClaimed] = useState(Array(2).fill(true))
 
   useEffect(() => {
-    if (claimInfo) {
-      distributorContract
-        .isClaimed(claimInfo.index)
-        .then((response) => {
-          setClaimed(response)
-        })
-        .catch(() => {
-          //swallow error, user probably on wrong network
-        })
-    } else {
-      setClaimed(false)
+    if (claimInfo[key] === undefined) {
+      return
     }
-  }, [distributorContract, claimInfo])
+    Promise.all(
+      claimInfo[key].map(async (claim, index) => {
+        if (claim) {
+          const distributorContract = distributorContracts[index]
+          let response
+          try {
+            response = await distributorContract.isClaimed(claim.index)
+          } catch (e) {
+            console.error(e)
+            response = true
+          }
+          return response
+        } else {
+          return true
+        }
+      })
+    ).then((response) => {
+      setClaimed(response)
+    })
+  }, [JSON.stringify(distributorContracts), JSON.stringify(claimInfo[key])])
 
   return claimed
 }
 
 export function useClaim(claimData, pending, setPending, setDone): void {
-  const distributorContract = useMerkleDistributorContract()
-
+  const distributorContracts = useMerkleDistributorContracts()
   useEffect(() => {
     if (pending) {
-      const args = [
-        claimData.index,
-        claimData.account,
-        claimData.amount,
-        claimData.proof,
-      ]
+      if (claimData.length !== 2) return
+      const oldClaim = claimData[0]
+      const newClaim = claimData[1]
 
-      distributorContract.estimateGas['claim'](...args, {}).then(
-        (estimatedGasLimit) => {
-          distributorContract
-            .claim(...args, { value: null, gasLimit: estimatedGasLimit })
-            .then((tx) => {
-              setPending(true)
+      if (newClaim && Number(newClaim.amount) > 0) {
+        if (oldClaim && Number(oldClaim.amount) > 0) {
+          const args = [
+            newClaim.account,
+            newClaim.index,
+            newClaim.amount,
+            newClaim.proof,
+            oldClaim.index,
+            oldClaim.amount,
+            oldClaim.proof,
+          ]
 
-              tx.wait(1).then(() => {
-                setDone(true)
-                setPending(false)
-              })
+          distributorContracts[1].estimateGas['claimBoth'](...args, {})
+            .then((estimatedGasLimit) => {
+              distributorContracts[1]
+                .claimBoth(...args, {
+                  value: null,
+                  gasLimit: estimatedGasLimit,
+                })
+                .then((tx) => {
+                  setPending(true)
+
+                  tx.wait(1).then(() => {
+                    setDone(true)
+                    setPending(false)
+                  })
+                })
+                .catch(() => {
+                  setPending(false)
+                })
             })
             .catch(() => {
-              setPending(false)
+              console.error('FAILED TO ESTIMATE')
+            })
+        } else {
+          const args = [
+            newClaim.index,
+            newClaim.account,
+            newClaim.amount,
+            newClaim.proof,
+          ]
+          distributorContracts[1].estimateGas['claim'](...args, {})
+            .then((estimatedGasLimit) => {
+              distributorContracts[1]
+                .claim(...args, { value: null, gasLimit: estimatedGasLimit })
+                .then((tx) => {
+                  setPending(true)
+
+                  tx.wait(1).then(() => {
+                    setDone(true)
+                    setPending(false)
+                  })
+                })
+                .catch(() => {
+                  setPending(false)
+                })
+            })
+            .catch(() => {
+              console.error('FAILED TO ESTIMATE')
             })
         }
-      )
+      } else if (oldClaim && Number(oldClaim.amount) > 0) {
+        const args = [
+          oldClaim.index,
+          oldClaim.account,
+          oldClaim.amount,
+          oldClaim.proof,
+        ]
+        distributorContracts[0].estimateGas['claim'](...args, {})
+          .then((estimatedGasLimit) => {
+            distributorContracts[0]
+              .claim(...args, { value: null, gasLimit: estimatedGasLimit })
+              .then((tx) => {
+                setPending(true)
+
+                tx.wait(1).then(() => {
+                  setDone(true)
+                  setPending(false)
+                })
+              })
+              .catch(() => {
+                setPending(false)
+              })
+          })
+          .catch(() => {
+            console.error('FAILED TO ESTIMATE')
+          })
+      }
     }
-  }, [distributorContract, pending])
+  }, [distributorContracts, pending])
 }

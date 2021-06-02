@@ -76,9 +76,14 @@ const WalletButton = () => {
   const commaBalance = Number(rawBalance).toLocaleString('en')
   const whaleBalance = trimCurrencyForWhales(rawBalance)
 
-  const rawClaim = useUserClaimData(walletWeb3ReactContext.account ?? '')
-  const commaClaim = rawClaim
-    ? Number(Number(rawClaim.amount) / 10 ** 18).toLocaleString('en')
+  const claimData = useUserClaimData(walletWeb3ReactContext.account ?? '')
+  let total = 0
+  claimData.forEach((individualClaimData) => {
+    if (individualClaimData && !(individualClaimData as any).claimed)
+      total += Number(individualClaimData.amount)
+  })
+  const commaClaim = claimData
+    ? Number(Number(total) / 10 ** 18).toLocaleString('en')
     : 0
 
   const rawSupply = useTokenSupply()

@@ -9,8 +9,13 @@ const Section = () => {
   const activeAccount = useActiveWeb3React().account
   const [account, setAccount] = useState('')
   const claimData = useUserClaimData(account)
+  let total = 0
+  claimData.forEach((individualClaimData) => {
+    if (individualClaimData && !(individualClaimData as any).claimed)
+      total += Number(individualClaimData.amount)
+  })
   const displayNumber = claimData
-    ? Number(Number(claimData.amount) / 10 ** 18).toLocaleString('en')
+    ? Number(total / 10 ** 18).toLocaleString('en')
     : 0
 
   const [pending, setPending] = useState(false)
@@ -64,7 +69,7 @@ const Section = () => {
               <div>
                 <Button
                   theme={
-                    walletConnected && claimData && !pending && !done
+                    walletConnected && total > 0 && !pending && !done
                       ? ''
                       : 'pink'
                   }
@@ -75,13 +80,13 @@ const Section = () => {
                     event.preventDefault()
                     setPending(true)
                   }}
-                  disabled={!walletConnected || !claimData || pending || done}
+                  disabled={!walletConnected || total === 0 || pending || done}
                 >
                   {done
                     ? 'BANK Claimed!'
                     : pending
                     ? 'Claim pending...'
-                    : claimData
+                    : total > 0
                     ? `${
                         walletConnected ? '' : 'Connect to '
                       }Claim ${displayNumber} BANK tokens`
