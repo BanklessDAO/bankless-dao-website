@@ -87,6 +87,8 @@ const WalletButton = () => {
     }
   }, [connectClick])
 
+  const tokenBase64 =
+    'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntmaWxsOiMyMzFmMjA7fS5jbHMtMntzdHJva2U6I2ZmZjtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2Utd2lkdGg6Ni41M3B4O30uY2xzLTN7ZmlsbDojZmZmO30uY2xzLTR7ZmlsbDojZWQxYzI0O308L3N0eWxlPjwvZGVmcz48cmVjdCBjbGFzcz0iY2xzLTEiIHk9Ii0xLjM1IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMS4zNSIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iMTAxLjI3IiBjeT0iMTAwIiByPSI4Ni43NyIvPjxwYXRoIGNsYXNzPSJjbHMtMyIgZD0iTTY5LjI1LDQ4LjczaDMyLjIzYTkzLjQxLDkzLjQxLDAsMCwxLDE0LjI4LjgsMjAuODgsMjAuODgsMCwwLDEsOC40MSwzLjMzLDIwLjY0LDIwLjY0LDAsMCwxLDYuMTksNi43NEExOC4yNCwxOC4yNCwwLDAsMSwxMzIuODQsNjlhMTkuMDksMTkuMDksMCwwLDEtMTEuMzMsMTcuNDksMjEuMjIsMjEuMjIsMCwwLDEsMTEuMzMsNy4zMiwxOS40MywxOS40MywwLDAsMSw0LDEyLjE2LDI0LDI0LDAsMCwxLTIuNTYsMTAuNywyMS41MiwyMS41MiwwLDAsMS03LDguMywyMy4yLDIzLjIsMCwwLDEtMTAuOTIsMy44M3EtNC4wOC40My0xOS42NC41NUg2OS4yNVpNODUuNTMsNjIuMTZWODAuOEg5Ni4ycTkuNTIsMCwxMS44My0uMjdhMTAuNzEsMTAuNzEsMCwwLDAsNi41Ny0yLjg5LDguNSw4LjUsMCwwLDAsMi40LTYuMyw4Ljg0LDguODQsMCwwLDAtMi4wNy02LjA4LDkuMzIsOS4zMiwwLDAsMC02LjEzLTIuODNxLTIuNDItLjI3LTEzLjkyLS4yN1ptMCwzMi4wN3YyMS41NkgxMDAuNnE4LjgxLDAsMTEuMTctLjVhMTAuMSwxMC4xLDAsMCwwLDUuOTEtMy4yMSw5Ljg4LDkuODgsMCwwLDAsMi4yOS02Ljg1LDEwLjUzLDEwLjUzLDAsMCwwLTEuNzYtNi4xNiwxMCwxMCwwLDAsMC01LjA5LTMuNjlxLTMuMzMtMS4xNi0xNC40NC0xLjE1WiIvPjxyZWN0IGNsYXNzPSJjbHMtNCIgeD0iNjkuMjUiIHk9IjEzOC40NyIgd2lkdGg9IjY3LjU1IiBoZWlnaHQ9IjEzLjU5Ii8+PC9zdmc+'
   function addToMetaMask() {
     web3Modal.connect().then((provider) => {
       if (!provider.isMetaMask) {
@@ -100,7 +102,7 @@ const WalletButton = () => {
               address: TOKEN_ADDRESS[1],
               decimals: 18,
               symbol: 'BANK',
-              image: 'https://bankless.community/images/token-metamask.svg',
+              image: tokenBase64,
             },
           },
         })
