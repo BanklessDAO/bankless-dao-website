@@ -30,6 +30,7 @@ const WalletButton = () => {
   const [addressHidden, setAddressHidden] = useState(true)
   const [copiedAddress, setCopiedAddress] = useState(false)
   const [animateToken, setAnimateToken] = useState(false)
+  const [unclaimedTokens, setUnclaimedTokens] = useState(false)
 
   const router = useRouter()
   const modalRef = useRef(null)
@@ -146,7 +147,7 @@ const WalletButton = () => {
         <TokenModal
           ref={modalRef}
           active={modalOpen}
-          claimNotice={rawClaim ? true : false}
+          claimNotice={unclaimedTokens}
         >
           <TokenModal.TitleRow>
             <TokenModal.Title>BANK Account</TokenModal.Title>
