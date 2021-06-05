@@ -1,6 +1,7 @@
 // import { BANK } from '../constants/index'
 // import { TransactionResponse } from '@ethersproject/providers'
 import { useEffect, useState } from 'react'
+import { stringify } from 'flatted'
 import { useActiveWeb3React, useDefaultWeb3React } from '.'
 import { useMerkleDistributorContracts } from './useMerkleDistributorContracts'
 import { isAddress } from '../utils'
@@ -141,7 +142,7 @@ export function useIsClaimed(
     ).then((response) => {
       setClaimed(response)
     })
-  }, [JSON.stringify(distributorContracts), JSON.stringify(claimInfo[key])])
+  }, [stringify(distributorContracts), stringify(claimInfo[key])])
 
   return claimed
 }
