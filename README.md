@@ -11,18 +11,3 @@ Bootstrapped with [NextJS](https://nextjs.org/), [Web3React](https://github.com/
 # Local Development
 
 `yarn dev`
-
-# Notes
-
-Before committing yarn.lock, verify that the entry for `ethereumjs-abi` reads
-
-```
-"ethereumjs-abi@git+https://github.com/ethereumjs/ethereumjs-abi.git":
-  version "0.6.8"
-  resolved "https://github.com/ethereumjs/ethereumjs-abi#1a27c59c15ab1e95ee8e5c4ed6ad814c49cc439e"
-  dependencies:
-    bn.js "^4.11.8"
-    ethereumjs-util "^6.0.0"
-```
-
-This is a temporary fix to allow Netlify to build with walletconnect
