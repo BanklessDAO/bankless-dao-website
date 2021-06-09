@@ -34,6 +34,7 @@ const WalletButton = () => {
   const [copiedAddress, setCopiedAddress] = useState(false)
   const [animateToken, setAnimateToken] = useState(false)
   const [unclaimedTokens, setUnclaimedTokens] = useState(false)
+  const [usingMetamask, setUsingMetamask] = useState(false)
 
   const router = useRouter()
   const modalRef = useRef(null)
@@ -73,6 +74,7 @@ const WalletButton = () => {
         .then((provider) => {
           setWeb3Provider(provider)
           if (provider.isMetaMask) {
+            setUsingMetamask(true)
             return walletWeb3ReactContext.activate(injected)
           } else {
             return walletWeb3ReactContext.activate(walletConnect)
@@ -278,9 +280,11 @@ const WalletButton = () => {
             ) : null}
           </TokenModal.BigRow>
           <TokenModal.ToolRow>
-            <TokenModal.ToolItem onClick={() => addToMetaMask()}>
-              Add BANK to MetaMask
-            </TokenModal.ToolItem>
+            {usingMetamask && (
+              <TokenModal.ToolItem onClick={() => addToMetaMask()}>
+                Add BANK to MetaMask
+              </TokenModal.ToolItem>
+            )}
           </TokenModal.ToolRow>
         </TokenModal>
       )}
