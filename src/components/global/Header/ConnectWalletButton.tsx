@@ -237,11 +237,11 @@ const WalletButton = () => {
             <TokenModal.BigBank>
               <strong>{whaleBalance}</strong>
               <img
-                onMouseEnter={() => {
-                  setAnimateToken(true)
-                }}
-                onMouseLeave={() => {
-                  setAnimateToken(false)
+                onClick={() => {
+                  if (!animateToken) {
+                    setAnimateToken(true)
+                    setTimeout(() => setAnimateToken(false), 3000)
+                  }
                 }}
                 src={
                   animateToken
