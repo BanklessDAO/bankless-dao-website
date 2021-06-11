@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import Button from 'src/components/parts/Button'
+import ENSName from 'src/components/parts/ENSName'
 import { useWalletWeb3React } from 'src/hooks'
 import { useDetectOutsideClick } from 'src/hooks/useDetectOutsideClick'
 import {
@@ -23,6 +24,7 @@ let web3Modal: Web3Modal
 const WalletButton = () => {
   const walletWeb3ReactContext = useWalletWeb3React()
   const isConnected = walletWeb3ReactContext.active
+  const walletAddress = walletWeb3ReactContext.account
   const [connectClick, setConnectClick] = useState(false)
 
   const modalRef = useRef(null)
@@ -115,7 +117,10 @@ const WalletButton = () => {
         }}
       >
         {isConnected
-          ? shortenAddress(walletWeb3ReactContext.account)
+          ? <ENSName 
+              address={walletAddress}
+              fallback={shortenAddress(walletAddress)}
+            />
           : 'Connect a Wallet'}
       </Button>
       <TokenModal ref={modalRef} active={modalOpen}>
