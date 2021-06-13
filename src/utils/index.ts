@@ -85,27 +85,18 @@ export const toFixed = function (x) {
   return x
 }
 
-export const trimCurrencyForWhales = (labelValue) => {
+export const trimCurrencyForWhales = (
+  labelValue: number,
+  nearest = 2
+): string | number => {
   // Nine Zeroes for Billions
   return Math.abs(Number(labelValue)) >= 1.0e9
-    ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(
-        Math.floor(Math.abs(Number(labelValue)) / 1.0e9).toString().length > 2
-          ? 0
-          : 1
-      ) + 'B'
+    ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(nearest) + 'B'
     : // Six Zeroes for Millions
     Math.abs(Number(labelValue)) >= 1.0e6
-    ? (Math.abs(Number(labelValue)) / 1.0e6).toFixed(
-        Math.floor(Math.abs(Number(labelValue)) / 1.0e6).toString().length > 2
-          ? 0
-          : 1
-      ) + 'M'
+    ? (Math.abs(Number(labelValue)) / 1.0e6).toFixed(nearest) + 'M'
     : // Three Zeroes for Thousands
     Math.abs(Number(labelValue)) >= 1.0e3
-    ? (Math.abs(Number(labelValue)) / 1.0e3).toFixed(
-        Math.floor(Math.abs(Number(labelValue)) / 1.0e3).toString().length > 2
-          ? 0
-          : 1
-      ) + 'K'
+    ? (Math.abs(Number(labelValue)) / 1.0e3).toFixed(nearest) + 'K'
     : Math.abs(Number(labelValue))
 }

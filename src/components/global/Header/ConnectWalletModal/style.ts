@@ -174,8 +174,10 @@ TokenModal.BigBank = styled.div`
   }
   strong {
     ${fontStyles.H1}
+    font-size: 60px;
     padding-right: 8px;
     @media (min-width: ${breakpoints.lg}) {
+      ${fontStyles.H1}
       padding-right: 20px;
     }
   }

@@ -113,6 +113,7 @@ const WalletButton = () => {
   const rawBalance = useTokenBalance(walletWeb3ReactContext.account) ?? 0
   const commaBalance = Number(rawBalance).toLocaleString('en')
   const whaleBalance = trimCurrencyForWhales(rawBalance)
+  const roundedBalance = trimCurrencyForWhales(rawBalance, 1)
 
   const claimData = useUserClaimData(walletWeb3ReactContext.account ?? '')
   claimData.forEach((individualClaimData) => {
@@ -235,7 +236,7 @@ const WalletButton = () => {
           <TokenModal.BigRow>
             <TokenModal.BankTitle>Bankless DAO / $BANK</TokenModal.BankTitle>
             <TokenModal.BigBank>
-              <strong>{whaleBalance}</strong>
+              <strong>{roundedBalance}</strong>
               <img
                 onClick={() => {
                   if (!animateToken) {
