@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react'
 import ENS, { getEnsAddress } from '@ensdomains/ensjs'
 
 async function getNameForAddress(address, provider) {
+    if (!provider || !address) {
+        return null
+    }
     const ens = new ENS({ provider, ensAddress: getEnsAddress("1") })
-    return await ens.getName(address)
+    const response = await ens.getName(address)
+    return response && response.name 
   }
   
 function useENSName(address, provider) {
     const [ name, setName ] = useState<string>()
     useEffect(() => {
-        getNameForAddress(address, provider).then(({ name }) => setName(name))
-    })
+        getNameForAddress(address, provider).then(setName)
+    }, [address, provider])
     return name
 }
 

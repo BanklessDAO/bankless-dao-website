@@ -22,6 +22,7 @@ import { INFURA_ID } from 'src/constants'
 let web3Modal: Web3Modal
 
 const WalletButton = () => {
+  const [web3Provider, setWeb3Provider] = useState()
   const walletWeb3ReactContext = useWalletWeb3React()
   const isConnected = walletWeb3ReactContext.active
   const walletAddress = walletWeb3ReactContext.account
@@ -59,6 +60,7 @@ const WalletButton = () => {
         .connect()
 
         .then((provider) => {
+          setWeb3Provider(provider)
           if (provider.isMetaMask) {
             return walletWeb3ReactContext.activate(injected)
           } else {
@@ -117,7 +119,8 @@ const WalletButton = () => {
         }}
       >
         {isConnected
-          ? <ENSName 
+          ? <ENSName
+              provider={web3Provider}
               address={walletAddress}
               fallback={shortenAddress(walletAddress)}
             />
