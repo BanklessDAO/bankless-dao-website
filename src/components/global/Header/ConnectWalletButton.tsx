@@ -110,12 +110,12 @@ const WalletButton = () => {
     })
   }
 
-  const rawBalance = useTokenBalance(walletWeb3ReactContext.account) ?? 0
+  const rawBalance = useTokenBalance(walletAddress) ?? 0
   const commaBalance = Number(rawBalance).toLocaleString('en')
   const whaleBalance = trimCurrencyForWhales(rawBalance)
   const roundedBalance = trimCurrencyForWhales(rawBalance, 1)
 
-  const claimData = useUserClaimData(walletWeb3ReactContext.account ?? '')
+  const claimData = useUserClaimData(walletAddress ?? '')
   claimData.forEach((individualClaimData) => {
     if (individualClaimData && !(individualClaimData as any).claimed)
       setUnclaimedTokens(true)
@@ -146,13 +146,15 @@ const WalletButton = () => {
           !isConnected ? setConnectClick(true) : null
         }}
       >
-        {isConnected
-          ? <ENSName
-              provider={web3Provider}
-              address={walletAddress}
-              fallback={shortenAddress(walletAddress)}
-            />
-          : 'Connect a Wallet'}
+        {isConnected ? (
+          <ENSName
+            provider={web3Provider}
+            address={walletAddress}
+            fallback={shortenAddress(walletAddress)}
+          />
+        ) : (
+          'Connect a Wallet'
+        )}
       </Button>
       {isConnected && (
         <TokenModal
@@ -174,13 +176,11 @@ const WalletButton = () => {
             <TokenModal.WalletIcon>
               <Jazzicon
                 diameter={25}
-                seed={jsNumberForAddress(walletWeb3ReactContext.account)}
+                seed={jsNumberForAddress(walletAddress)}
               />
             </TokenModal.WalletIcon>
             <TokenModal.AddressName>
-              {addressHidden
-                ? obscureAddress(walletWeb3ReactContext.account)
-                : walletWeb3ReactContext.account}
+              {addressHidden ? obscureAddress(walletAddress) : walletAddress}
             </TokenModal.AddressName>
             <TokenModal.ToggleAddress
               onClick={() => setAddressHidden(!addressHidden)}
@@ -195,7 +195,7 @@ const WalletButton = () => {
           <TokenModal.WalletActionsRow>
             <TokenModal.WalletAction
               onClick={() => {
-                navigator.clipboard.writeText(walletWeb3ReactContext.account)
+                navigator.clipboard.writeText(walletAddress)
                 setCopiedAddress(true)
                 setTimeout(() => setCopiedAddress(false), 2000)
               }}
@@ -208,9 +208,7 @@ const WalletButton = () => {
               />
               {copiedAddress ? `Copied!` : `Copy Address`}
             </TokenModal.WalletAction>
-            <NextLink
-              href={`https://etherscan.io/address/${walletWeb3ReactContext.account}`}
-            >
+            <NextLink href={`https://etherscan.io/address/${walletAddress}`}>
               <TokenModal.WalletAction>
                 <img
                   src="/images/icon-export.svg"
