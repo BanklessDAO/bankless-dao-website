@@ -75,10 +75,13 @@ export function useUserClaimData(
     )
   }, [account, chainId, key])
 
-  const claimed = useIsClaimed(claimInfo, key, distributorContracts)
-
   const [finalClaims, setFinalClaims] = useState([])
   try {
+    const claimed = useIsClaimed(claimInfo, key, distributorContracts)
+    console.error('Test of claimed JSON')
+    console.error(JSON.stringify(claimed))
+    console.error('/Test of claimed JSON')
+
     useEffect(() => {
       try {
         setFinalClaims(
@@ -89,11 +92,11 @@ export function useUserClaimData(
             : []
         )
       } catch (error) {
-        alert(error)
+        console.error(error)
       }
     }, [account, JSON.stringify(claimed), JSON.stringify(claimInfo)])
   } catch (error) {
-    alert(error)
+    console.error(error)
   }
 
   return finalClaims
