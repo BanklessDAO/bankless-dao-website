@@ -130,30 +130,37 @@ export function useIsClaimed(
 ): Array<boolean> {
   const [claimed, setClaimed] = useState(Array(2).fill(true))
 
-  useEffect(() => {
-    if (claimInfo[key] === undefined) {
-      return
-    }
-    Promise.all(
-      claimInfo[key].map(async (claim, index) => {
-        if (claim) {
-          const distributorContract = distributorContracts[index]
-          let response
-          try {
-            response = await distributorContract.isClaimed(claim.index)
-          } catch (e) {
-            console.error(e)
-            response = true
+  try {
+    console.error('distributorContracts JSON')
+    console.error(distributorContracts)
+    console.error('/distributorContracts JSON')
+    useEffect(() => {
+      if (claimInfo[key] === undefined) {
+        return
+      }
+      Promise.all(
+        claimInfo[key].map(async (claim, index) => {
+          if (claim) {
+            const distributorContract = distributorContracts[index]
+            let response
+            try {
+              response = await distributorContract.isClaimed(claim.index)
+            } catch (e) {
+              console.error(e)
+              response = true
+            }
+            return response
+          } else {
+            return true
           }
-          return response
-        } else {
-          return true
-        }
+        })
+      ).then((response) => {
+        setClaimed(response)
       })
-    ).then((response) => {
-      setClaimed(response)
-    })
-  }, [stringify(distributorContracts), stringify(claimInfo[key])])
+    }, [stringify(distributorContracts), stringify(claimInfo[key])])
+  } catch (error) {
+    console.error(error)
+  }
 
   return claimed
 }
