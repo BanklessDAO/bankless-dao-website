@@ -78,15 +78,23 @@ export function useUserClaimData(
   const claimed = useIsClaimed(claimInfo, key, distributorContracts)
 
   const [finalClaims, setFinalClaims] = useState([])
-  useEffect(() => {
-    setFinalClaims(
-      claimInfo[key]
-        ? claimInfo[key].map((info, index) => {
-            return !claimed[index] && info ? info : undefined
-          })
-        : []
-    )
-  }, [account, JSON.stringify(claimed), JSON.stringify(claimInfo)])
+  try {
+    useEffect(() => {
+      try {
+        setFinalClaims(
+          claimInfo[key]
+            ? claimInfo[key].map((info, index) => {
+                return !claimed[index] && info ? info : undefined
+              })
+            : []
+        )
+      } catch (error) {
+        alert(error)
+      }
+    }, [account, JSON.stringify(claimed), JSON.stringify(claimInfo)])
+  } catch (error) {
+    alert(error)
+  }
 
   return finalClaims
 }
