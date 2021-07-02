@@ -68,6 +68,11 @@ export const fontStyles = {
     font-size: 13px;
     line-height: 18px;
   `,
+  Small: css`
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+  `,
 }
 
 export const breakpoints = {

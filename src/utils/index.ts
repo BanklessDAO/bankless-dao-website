@@ -19,6 +19,10 @@ export function shortenAddress(address: string): string {
   return `${address.substr(0, 6)}...${address.substr(38, 4)}`
 }
 
+export function obscureAddress(address: string): string {
+  return `${address.substr(0, 4)}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`
+}
+
 export function getContract(
   address: string,
   ABI: any,
@@ -81,15 +85,18 @@ export const toFixed = function (x) {
   return x
 }
 
-export const trimCurrencyForWhales = (labelValue) => {
+export const trimCurrencyForWhales = (
+  labelValue: number,
+  nearest = 2
+): string | number => {
   // Nine Zeroes for Billions
   return Math.abs(Number(labelValue)) >= 1.0e9
-    ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(2) + 'B'
+    ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(nearest) + 'B'
     : // Six Zeroes for Millions
     Math.abs(Number(labelValue)) >= 1.0e6
-    ? (Math.abs(Number(labelValue)) / 1.0e6).toFixed(2) + 'M'
+    ? (Math.abs(Number(labelValue)) / 1.0e6).toFixed(nearest) + 'M'
     : // Three Zeroes for Thousands
     Math.abs(Number(labelValue)) >= 1.0e3
-    ? (Math.abs(Number(labelValue)) / 1.0e3).toFixed(2) + 'K'
+    ? (Math.abs(Number(labelValue)) / 1.0e3).toFixed(nearest) + 'K'
     : Math.abs(Number(labelValue))
 }
