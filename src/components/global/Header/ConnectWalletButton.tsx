@@ -117,7 +117,11 @@ const WalletButton = () => {
 
   const claimData = useUserClaimData(walletAddress ?? '')
   claimData.forEach((individualClaimData) => {
-    if (individualClaimData && !(individualClaimData as any).claimed)
+    if (
+      !unclaimedTokens &&
+      individualClaimData &&
+      !(individualClaimData as any).claimed
+    )
       setUnclaimedTokens(true)
   })
 
