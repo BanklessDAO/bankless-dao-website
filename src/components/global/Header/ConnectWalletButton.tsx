@@ -33,7 +33,6 @@ const WalletButton = () => {
   const [addressHidden, setAddressHidden] = useState(true)
   const [copiedAddress, setCopiedAddress] = useState(false)
   const [animateToken, setAnimateToken] = useState(false)
-  const [unclaimedTokens, setUnclaimedTokens] = useState(false)
   const [usingMetamask, setUsingMetamask] = useState(false)
 
   const router = useRouter()
@@ -116,13 +115,10 @@ const WalletButton = () => {
   const roundedBalance = trimCurrencyForWhales(rawBalance, 1)
 
   const claimData = useUserClaimData(walletAddress ?? '')
+  let unclaimedTokens = false
   claimData.forEach((individualClaimData) => {
-    if (
-      !unclaimedTokens &&
-      individualClaimData &&
-      !(individualClaimData as any).claimed
-    )
-      setUnclaimedTokens(true)
+    if (individualClaimData && !(individualClaimData as any).claimed)
+      unclaimedTokens = true
   })
 
   return (
