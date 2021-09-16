@@ -45,6 +45,20 @@ const SiteLayout = ({ pageMeta, children }) => {
     defaultContext.activate(network)
   }, [])
 
+  if (pageMeta.url === 'https://www.bankless.community/season1recap')
+    // don't show layout
+    return (
+      <>
+        <GlobalStyle />
+        <Head {...pageMeta} />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        ></meta>
+        <main>{children}</main>
+      </>
+    )
+
   return (
     <React.Fragment>
       <GlobalStyle />
