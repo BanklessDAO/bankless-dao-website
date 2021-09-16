@@ -98,10 +98,17 @@ const Season1Recap = (): JSX.Element => {
     const scrollSpeed = 20
     document.documentElement.scrollLeft -= delta * scrollSpeed
     document.body.scrollLeft -= delta * scrollSpeed
-    e.preventDefault()
   }
 
   if (typeof window !== 'undefined') {
+    document.documentElement.scrollLeft = 0
+    let scrollSpeed = 10
+    window.setInterval(() => {
+      const lastScrollLeft = document.documentElement.scrollLeft
+      document.documentElement.scrollLeft += scrollSpeed
+      if (lastScrollLeft === document.documentElement.scrollLeft)
+        scrollSpeed = 0
+    }, 10)
     if (window.addEventListener) {
       // IE9, Chrome, Safari, Opera
       window.addEventListener('mousewheel', scrollHorizontally, false)
