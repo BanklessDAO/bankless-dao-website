@@ -45,7 +45,11 @@ const SiteLayout = ({ pageMeta, children }) => {
     defaultContext.activate(network)
   }, [])
 
-  if (pageMeta.url === 'https://www.bankless.community/season1recap')
+  if (
+    pageMeta.url ===
+    ('https://www.bankless.community/season1recap' ||
+      'https://www.bankless.community/season2')
+  )
     // don't show layout
     return (
       <>
