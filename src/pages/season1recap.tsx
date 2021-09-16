@@ -26,12 +26,14 @@ const Scroll = styled.div`
 const Recap = styled.div`
   img {
     height: 100%;
+    width: auto;
   }
 `
 
 const Season2 = styled.div`
   width: 100vw;
   height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
