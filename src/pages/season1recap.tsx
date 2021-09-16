@@ -108,9 +108,12 @@ const Season1Recap = (): JSX.Element => {
         ? window.innerWidth / 200
         : window.innerWidth / 100
     const scrollInterval = setInterval(() => {
-      const lastScrollLeft = document.documentElement.scrollLeft
       document.documentElement.scrollLeft += scrollSpeed
-      if (lastScrollLeft === document.documentElement.scrollLeft)
+      if (
+        document.documentElement.scrollWidth <=
+        document.documentElement.scrollLeft +
+          document.documentElement.clientWidth
+      )
         clearInterval(scrollInterval)
     }, 10)
     if (window.addEventListener) {
