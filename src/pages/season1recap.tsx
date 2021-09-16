@@ -103,12 +103,12 @@ const Season1Recap = (): JSX.Element => {
 
   if (typeof window !== 'undefined') {
     document.documentElement.scrollLeft = 0
-    let scrollSpeed = 10
-    window.setInterval(() => {
+    const scrollSpeed = 10
+    const scrollInterval = setInterval(() => {
       const lastScrollLeft = document.documentElement.scrollLeft
       document.documentElement.scrollLeft += scrollSpeed
       if (lastScrollLeft === document.documentElement.scrollLeft)
-        scrollSpeed = 0
+        clearInterval(scrollInterval)
     }, 10)
     if (window.addEventListener) {
       // IE9, Chrome, Safari, Opera
