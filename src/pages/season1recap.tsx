@@ -2,7 +2,14 @@ import { GetStaticProps } from 'next'
 import { PageMetaProps } from '../components/global/Head'
 import styled from 'styled-components'
 
+declare global {
+  interface Window {
+    attachEvent: any
+  }
+}
+
 const Container = styled.div`
+  height: 100vh;
   max-height: 100vh;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -25,7 +32,7 @@ const Scroll = styled.div`
 
 const Recap = styled.div`
   img {
-    height: 100%;
+    height: 100vh;
     width: auto;
   }
 `
@@ -85,6 +92,26 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const Season1Recap = (): JSX.Element => {
+  function scrollHorizontally(e) {
+    e = window.event || e
+    const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail))
+    const scrollSpeed = 20
+    document.documentElement.scrollLeft -= delta * scrollSpeed
+    document.body.scrollLeft -= delta * scrollSpeed
+    e.preventDefault()
+  }
+
+  if (typeof window !== 'undefined') {
+    if (window.addEventListener) {
+      // IE9, Chrome, Safari, Opera
+      window.addEventListener('mousewheel', scrollHorizontally, false)
+      // Firefox
+      window.addEventListener('DOMMouseScroll', scrollHorizontally, false)
+    } else {
+      // IE 6/7/8
+      window.attachEvent('onmousewheel', scrollHorizontally)
+    }
+  }
   return (
     <Container>
       <Intro src="/images/Season1-Intro.jpg" />
