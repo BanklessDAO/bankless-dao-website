@@ -73,7 +73,7 @@ const Season2 = styled.div`
 
 const pageMeta: PageMetaProps = {
   title: 'Season 1 Recap | Bankless DAO',
-  description: 'Recap for Season 1 and intro to Season 2',
+  description: 'Recap for Season 1 and intro to Season 2 🚀',
   image: '/images/Season1-Meta.jpg',
   url: 'https://www.bankless.community/season1recap',
 }
