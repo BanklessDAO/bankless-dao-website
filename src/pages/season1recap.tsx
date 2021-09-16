@@ -103,7 +103,10 @@ const Season1Recap = (): JSX.Element => {
 
   if (typeof window !== 'undefined') {
     document.documentElement.scrollLeft = 0
-    const scrollSpeed = 10
+    const scrollSpeed =
+      window.innerWidth > 1000
+        ? window.innerWidth / 200
+        : window.innerWidth / 100
     const scrollInterval = setInterval(() => {
       const lastScrollLeft = document.documentElement.scrollLeft
       document.documentElement.scrollLeft += scrollSpeed
