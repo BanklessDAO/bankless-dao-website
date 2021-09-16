@@ -13,7 +13,7 @@ function getLibrary(provider) {
 
 const Web3ReactProviderDefault = dynamic(
   () => import('../providers/Web3ReactProviderDefaultSSR'),
-  { ssr: false }
+  { ssr: true }
 )
 
 const BanklessApp = ({ Component, pageProps }: AppProps) => {

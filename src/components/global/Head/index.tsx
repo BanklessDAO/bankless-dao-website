@@ -8,7 +8,6 @@ export interface PageMetaProps {
 }
 
 const Head = ({ title = '', description = '', image }: PageMetaProps) => {
-  // TODO social images
   return (
     <NextHead>
       <title>{title}</title>
