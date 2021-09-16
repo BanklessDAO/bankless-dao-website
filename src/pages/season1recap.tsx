@@ -1,12 +1,23 @@
 import { GetStaticProps } from 'next'
 import { PageMetaProps } from '../components/global/Head'
-import styled from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 
 declare global {
   interface Window {
     attachEvent: any
   }
 }
+
+const styles = css`
+  body,
+  html {
+    height: -webkit-fill-available;
+  }
+`
+
+const GlobalStyle = createGlobalStyle`
+  ${styles}
+`
 
 const Container = styled.div`
   height: 100vh;
@@ -121,6 +132,7 @@ const Season1Recap = (): JSX.Element => {
   }
   return (
     <Container>
+      <GlobalStyle />
       <Intro src="/images/Season1-Intro.jpg" />
       <Scroll>
         <Recap>
